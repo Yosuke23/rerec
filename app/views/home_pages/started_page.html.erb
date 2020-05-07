@@ -1,0 +1,18 @@
+<div class="page-title">
+　<h1>新規登録/ログイン</h1>
+</div>
+	<div class="start">
+	 <%= link_to '新規登録', '#', class: "signup" %>
+	</div>
+	<div class="facebook">
+	 <%= link_to 'Facebookでログイン', '/auth/facebook', class: "facebook-login" %>
+	</div>
+	<div class="twitter">
+	 <%= link_to 'Twitterでログイン', '/auth/twitter', class: "twitter-login" %>
+	</div>
+	<div class="mail">
+	 <%= link_to 'メールアドレスでログイン', '#', class: "mail-login" %>
+	</div>
+<div class="login-info">
+　<p><%= link_to "利用規約", terms_path %>及び<%= link_to "プライバシーポリシー", privacy_path %>に<br>同意の上ご利用ください</p>
+</div>

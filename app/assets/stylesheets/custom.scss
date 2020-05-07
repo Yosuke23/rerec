@@ -1,0 +1,416 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+@mixin box_sizing{
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+@media(max-width: 768px){
+    .footer{display:none; }
+}
+
+@media(min-width: 768px){
+    .bottom-menu{display:none; }
+}
+
+$gray-medium-light: #eaeaea;
+
+
+/*************************************/
+/*home.html.erb*/
+
+.jumbotron {
+  max-width: 100%;
+  height:auto;
+ }
+
+.rerec_top > h1 {
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Bold.otf');
+  font-size:50px;
+  padding: 10%;
+  color: white;
+  text-shadow: 1px 1px 2px gray;
+}
+
+.font-s {
+  font-size:20px;
+}
+
+/* ログイン実装後アクティブにする */
+/*_home_for_after_logged_in.html.erb*/
+/*.user_info > h1 {
+  font-weight: bold;
+ }*/
+
+
+/*************************************/
+/* home page等のbobyコンテンツとヘッダーとの間隔設定 */
+
+body {
+  font-weight: bold;
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Bold.otf');
+  padding-top: 120px;
+  margin-top: 10px;
+  padding-bottom: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+
+/*************************************/
+/* 全体の文字レイアウト設定 */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/*************************************/
+/* flash設定 */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+} 
+
+/*************************************/
+/* header設定 */
+
+.input-group-btn .btn {
+  font-weight:bold;
+  color: #000000;
+}
+.search-nav {
+  width: 300px;
+  padding-top: 8px;
+}
+
+.navbar-default {
+  border-bottom:none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  &:hover {
+    color: #5BC0DE;
+  }
+ }
+
+.navbar-right  {
+  font-weight: bold;
+}
+
+.navbar-fixed-top {
+  background-color:#000000;
+  padding: 3.5px 0;
+  }
+
+#logo {
+  font-weight: bold;
+  float: left;
+  margin-right: 10px;
+  font-size: 1.9em;
+  color: white;
+  /*text-shadow: 1px 1px 2px gray;*/
+  letter-spacing: -1px;
+  padding-top: 7px;
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Bold.otf');
+  &:hover {
+    text-shadow: 1px 1px 2px #515151;
+    text-decoration: none;
+  }
+}
+
+
+
+/*************************************/
+/* footer設定 */
+/* レスポンシブ */
+/*PC表示の際はボトムメニューは表示しない*/
+
+  .bottom-menu {
+    position: fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height:45px;/*高さ*/
+    margin:0;
+    padding:0;
+    background-color:#909090;/*背景色*/
+    border-top:2px solid #909090;/*バーの上の線*/
+    border-bottom:2px solid #909090;/*バーの下の線*/
+    z-index:30;}
+
+  .bottom-menu > li {
+    margin-top: 12px; 
+    margin-left:15px;
+    float:left;
+    width:25%;
+    color: white;
+    list-style-type:none;
+    text-align:center;
+    text-decoration:none;
+    font-size:13px;}
+
+
+/* PC表示 */
+
+.footer {
+  margin-top: 145px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: black;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    margin-top: 10px;
+    float: left;
+    font-size: 13px;
+  }
+  ul {
+      float: right;
+      list-style: none;
+    li { 
+       margin-top: -10px;
+       font-size: 13px;
+       float: left;
+       margin-left: 15px;
+    }
+  }
+}
+
+/* footerメニュー設定 */
+
+.footer-menu {
+  margin-top: -60px;
+}
+
+.footer-menu > h3 {
+    line-height: 30px;
+}
+
+.footer-menu > p {
+  line-height: 25px;
+}
+
+.about-menu > h3 {
+  line-height: 40px;
+}
+
+.about-menu > h4 {
+  font-weight: bold;
+  margin-top: 40px;
+  margin-left: 40px;
+  line-height: 40px;
+  color: black;
+}
+.about-menu {
+  margin-top: -60px;
+}
+
+.about-menu > p {
+  line-height: 35px;
+}
+
+#name {
+  margin-top: 25px;
+  line-height: 30px;
+  font-size: 16px;
+}
+
+
+/*************************************/
+/* started_page.html.erb */
+/* signup-button */
+.start {
+  text-align: center;
+}
+
+.signup {
+  background-color: #09095f;
+  //margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 80px;
+  max-width: 400px;
+  width: 100%;
+}
+.signup:hover {
+  background-color: #2e4a88;
+  color: white;
+  text-decoration: none;
+}
+
+/* facebook-login-button */
+.facebook {
+  margin-top: 20px;
+  text-align: center;
+}
+.facebook-login {
+  background-color: #2e4a88;
+  //margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 80px;
+  max-width: 400px;
+  width: 100%;
+}
+.facebook-login:hover {
+  background-color: #39558f;
+  color: white;
+  text-decoration: none;
+}
+
+/* twitter-login-button */
+.twitter {
+  margin-top: 20px;
+  text-align: center;
+}
+.twitter-login {
+  background-color: #3fa0f7;
+  //margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 80px;
+  max-width: 400px;
+  width: 100%;
+}
+.twitter-login:hover {
+  background-color: #5ec9ff;
+  color: white;
+  text-decoration: none;
+}
+
+
+/* mail-login-button */
+.mail {
+  margin-top: 20px;
+  text-align: center;
+}
+.mail-login {
+  background-color: #3dc1d8;
+  //margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 80px;
+  max-width: 400px;
+  width: 100%;
+}
+.mail-login:hover {
+  background-color: #43d3ec;
+  color: white;
+  text-decoration: none;
+}
+
+/* info.html.erb .login-info */
+.login-info {
+  margin-top:20px;
+  text-align: center;
+  font-size: 14px;
+  
+}
+
+/* new.html.erb login-button */
+.login-button {
+  font-weight: bold;
+}
+
+/* 「新規登録」「ログイン」のスタイリング */
+/* users/new.html.erb static_pages/new.html.erb 共通クラス */
+
+.flash-margin {
+  margin-bottom: 65px;
+}
+.page-title  {
+  overflow: hidden;
+  margin-left: -30px;
+  font-size: 11px;
+  font-weight:bold;
+  margin-top: -55px;
+}
+.page-title > h1  {
+  font-size: 26px;
+  font-weight:bold;
+}
