@@ -142,7 +142,7 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.3.8)
+    fog-aliyun (0.3.10)
       fog-core
       fog-json
       ipaddress (~> 0.8)
@@ -332,8 +332,8 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0425)
-    mimemagic (0.3.4)
-    mini_magick (4.7.0)
+    mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.10.3)
@@ -383,7 +383,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    public_suffix (4.0.4)
+    public_suffix (4.0.5)
     puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -456,8 +456,8 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
+    sass-rails (5.0.6)
+      railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -537,7 +537,7 @@ DEPENDENCIES
   jquery-bgswitcher-rails
   jquery-rails (= 4.3.1)
   listen (>= 3.0.5, < 3.2)
-  mini_magick (= 4.7.0)
+  mini_magick
   minitest (= 5.10.3)
   minitest-reporters (= 1.1.14)
   mysql2 (>= 0.4.4, < 0.6.0)
@@ -549,7 +549,7 @@ DEPENDENCIES
   rails-controller-testing (= 1.0.2)
   rails-i18n
   rails_12factor
-  sass-rails (~> 5.0)
+  sass-rails (= 5.0.6)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
