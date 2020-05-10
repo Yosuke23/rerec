@@ -21,7 +21,7 @@ $gray-medium-light: #eaeaea;
 
 
 /*************************************/
-/*home.html.erb*/
+/*home.html.erbスタイリング*/
 
 .jumbotron {
   max-width: 100%;
@@ -105,7 +105,21 @@ p {
 }
 
 /*************************************/
-/* flash設定 */
+/* formレイアウト */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+/*************************************/
+/* form エラーのスタイリング */
 
 #error_explanation {
   color: red;
@@ -397,6 +411,7 @@ p {
   font-weight: bold;
 }
 
+/*************************************/
 /* 「新規登録」「ログイン」のスタイリング */
 /* users/new.html.erb static_pages/new.html.erb 共通クラス */
 
@@ -413,4 +428,61 @@ p {
 .page-title > h1  {
   font-size: 26px;
   font-weight:bold;
+}
+
+
+/*************************************/
+/* show.html.erbのサイドバーとgravatarのスタイリング */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/*************************************/
+/* デバッグ表示を整形 */
+/* mixins, variables, etc. */
+@mixin box_sizing{
+ -moz-box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+.debug_dump {
+ clear: both;
+ flort: left;
+ width: 100%;
+ margin-top: 45px;
+ @inxlude box-sizing;
 }

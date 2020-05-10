@@ -16,14 +16,14 @@
        <!-- 検索バー　（cssのsearch-navクラスににスタイリング）  -->
        <!-- メニューの１つとして県検索バーを「list」に含める」-->
        <li class="search-nav">
-           <%= form_tag(root_path, method: :get) do %>
+           <%#= form_tag(root_path, method: :get) do %>
         <div class="input-group">
-          <%= search_field_tag "q", params[:q], class: "form-control", placeholder: "感想内容、読者名" %>
+          <%#= search_field_tag "q", params[:q], class: "form-control", placeholder: "感想内容、読者名" %>
             <span class="input-group-btn">
              <%= submit_tag "検索", class: "btn btn-default" %>
             </span>
         </div>
-          <% end %>
+          <%# end %>
        </li>
        <!-- メニューの１つとして検索バーを「list」に含める」-->
        <!-- if logged_in?式には含まずいずれのヘッダーにも検索バーは表示させる仕様　-->
