@@ -333,7 +333,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0425)
     mimemagic (0.3.4)
-    mini_magick (4.7.0)
+    mini_magick (4.9.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.10.3)
@@ -537,7 +537,7 @@ DEPENDENCIES
   jquery-bgswitcher-rails
   jquery-rails (= 4.3.1)
   listen (>= 3.0.5, < 3.2)
-  mini_magick (= 4.7.0)
+  mini_magick (= 4.9.4)
   minitest (= 5.10.3)
   minitest-reporters (= 1.1.14)
   mysql2 (>= 0.4.4, < 0.6.0)
