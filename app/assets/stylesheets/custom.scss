@@ -289,6 +289,33 @@ input {
 
 /*************************************/
 /* started_page.html.erb */
+/* gest-login-button */
+.gest {
+  margin-top: 20px;
+  text-align: center;
+}
+.gest-login {
+  background-color: black;
+  //margin-left: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 80px;
+  max-width: 400px;
+  width: 100%;
+}
+.gest-login:hover {
+  background-color: #3b3b3b;
+  color: white;
+  text-decoration: none;
+}
+/*************************************/
 /* signup-button */
 .start {
   text-align: center;
@@ -315,7 +342,7 @@ input {
   color: white;
   text-decoration: none;
 }
-
+/*************************************/
 /* facebook-login-button */
 .facebook {
   margin-top: 20px;
@@ -342,7 +369,7 @@ input {
   color: white;
   text-decoration: none;
 }
-
+/*************************************/
 /* twitter-login-button */
 .twitter {
   margin-top: 20px;
@@ -369,8 +396,7 @@ input {
   color: white;
   text-decoration: none;
 }
-
-
+/*************************************/
 /* mail-login-button */
 .mail {
   margin-top: 20px;
@@ -486,3 +512,19 @@ aside {
  margin-top: 45px;
  @inxlude box-sizing;
 }
+
+/*************************************/
+/* login formのレイアウト */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+/*************************************/

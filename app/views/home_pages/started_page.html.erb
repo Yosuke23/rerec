@@ -1,18 +1,30 @@
 <div class="page-title">
 　<h1>新規登録/ログイン</h1>
 </div>
+    <!--ゲストユーザーでログイン-->
+    <%= form_for(:session, url: login_path) do |f| %>
+      <div class="gest">
+        <%= f.hidden_field :email, value: 'gest_user@rerec.com' %>
+        <%= f.hidden_field :password, value: 'rerec12345' %>
+        <%= f.submit 'ゲストユーザーでログイン', class: "gest-login" %>
+      </div>
+    <% end %>
+    <!--新規登録-->
 	<div class="start">
 	 <%= link_to '新規登録', 'signup', class: "signup" %>
 	</div>
+	<!--Facebookでログイン-->
 	<div class="facebook">
 	 <%= link_to 'Facebookでログイン', '/auth/facebook', class: "facebook-login" %>
 	</div>
+	<!--Twitterでログイン-->
 	<div class="twitter">
 	 <%= link_to 'Twitterでログイン', '/auth/twitter', class: "twitter-login" %>
 	</div>
+	<!--メールアドレスでログイン-->
 	<div class="mail">
-	 <%= link_to 'メールアドレスでログイン', '#', class: "mail-login" %>
-	</div>
+	 <%= link_to 'メールアドレスでログイン', 'login', class: "mail-login" %>
+    </div>
 <div class="login-info">
 　<p><%= link_to "利用規約", terms_path %>及び<%= link_to "プライバシーポリシー", privacy_path %>に<br>同意の上ご利用ください</p>
 </div>
