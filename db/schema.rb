@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_112057) do
+ActiveRecord::Schema.define(version: 2020_05_19_105815) do
+
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "googlebooksapi_id", null: false
+    t.string "title", null: false
+    t.string "author"
+    t.string "image"
+    t.text "description"
+    t.string "buy_link"
+    t.bigint "user_id"
+    t.date "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["googlebooksapi_id"], name: "index_books_on_googlebooksapi_id", unique: true
+    t.index ["user_id", "created_at", "author", "title"], name: "index_books_on_user_id_and_created_at_and_author_and_title"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "registers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "book_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_registers_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_registers_on_user_id_and_book_id", unique: true
+    t.index ["user_id"], name: "index_registers_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -22,4 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_112057) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "books", "users"
+  add_foreign_key "registers", "books"
+  add_foreign_key "registers", "users"
 end

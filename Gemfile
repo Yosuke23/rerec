@@ -38,6 +38,8 @@ gem 'omniauth-twitter'
 gem 'dotenv-rails'
 gem 'fog-core', '2.1.0'
 gem 'rails-i18n'
+gem 'kaminari'
+gem 'addressable'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

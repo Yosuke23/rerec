@@ -118,6 +118,23 @@ input {
   height: auto !important;
 }
 
+
+/* メールアドレスでログインページ　*/
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span{
+    margin-left: 20px;
+    flont-weight:normal;
+  }
+}
+
+#session_remember_me{
+  width: auto;
+  margin-left: 0;
+}
+
 /*************************************/
 /* form エラーのスタイリング */
 

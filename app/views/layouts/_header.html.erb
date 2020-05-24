@@ -9,38 +9,27 @@
          </button>
           <%= link_to "REREC", root_path, id: "logo" %>
        </div>
-
   <nav>
-        <!--id="navbar" と　navbar-collapse collapseを追記-->
     <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
-       <!-- 検索バー　（cssのsearch-navクラスににスタイリング）  -->
-       <!-- メニューの１つとして県検索バーを「list」に含める」-->
-       <li class="search-nav">
-           <%#= form_tag(root_path, method: :get) do %>
-        <div class="input-group">
-          <%#= search_field_tag "q", params[:q], class: "form-control", placeholder: "感想内容、読者名" %>
-            <span class="input-group-btn">
-             <%= submit_tag "検索", class: "btn btn-default" %>
-            </span>
-        </div>
-          <%# end %>
-       </li>
-       <!-- メニューの１つとして検索バーを「list」に含める」-->
-       <!-- if logged_in?式には含まずいずれのヘッダーにも検索バーは表示させる仕様　-->
-
+        <li>
+         <%= link_to "本を検索する", search_books_path %>
+        </li>
 
 　　<!-- ログイン時のヘッダーメニュー -->
 
       <% if logged_in? %>
         <li>
-          <%#= link_to "", root_path %></li>
+          <%#= link_to "", root_path %>
+        </li>
+
         <li>
-          <%= link_to "マイページ", current_user %></li>
+          <%= link_to "マイページ", current_user %>
+        </li>
         <li>
           <%= link_to "ログアウト", logout_path, method: :delete %> 
-       </li>
+        </li>
       <% else %>
-      <li><%= link_to "はじめる", 'started_page' %>
+       <li><%= link_to "はじめる", '/started_page' %>
      <% end %>
     </ul>
   </nav>

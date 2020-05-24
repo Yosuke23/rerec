@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'registers/create'
+  get 'registers/destroy'
   get 'sessions/new'
   root 'home_pages#home'
   get '/about',   to: 'home_pages#about'
@@ -12,5 +14,9 @@ Rails.application.routes.draw do
   post  '/login',     to: 'sessions#create'
   delete  '/logout',    to: 'sessions#destroy'
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :books, only: %i[index create show] do
+  	collection do
+     get :search
+    end		
+  end
 end

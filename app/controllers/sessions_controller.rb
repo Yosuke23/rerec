@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
   def new
   end
 
@@ -10,11 +9,7 @@ class SessionsController < ApplicationController
    	log_in @user
    	params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
     redirect_back_or @user
-     if @user.email == "gest_user@rerec.com"
-      flash[:success] = 'ゲストユーザーでログインしました'
-     else
-      flash[:success] = 'ログインしました'
-     end 
+    flash[:success] = "#{@user.name}さんでログインしました"
    else
    	flash.now[:danger] = 'メールアドレスが無効か、パスワードが不一致のようです'
    	render 'new'

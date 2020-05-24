@@ -13,6 +13,10 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 	has_secure_password
 
+## アソシエーション
+     has_many :registers, dependent: :destroy
+     has_many :books, through: :registers
+     
 ## ログイン機能関連メソッド
 
     # 渡された文字列のハッシュ値を返す

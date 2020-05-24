@@ -1,0 +1,8 @@
+<div class="container">
+ <div class="row">
+   <%= render partial: 'books/book_searching', collection: books, as: :book %>
+  <div class="mt-3">
+   <%= paginate books %>
+  </div>
+ </div>
+</div>
