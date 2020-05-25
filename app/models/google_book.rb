@@ -5,7 +5,7 @@ class GoogleBook
 
   attribute :googlebooksapi_id, :string
   attribute :author, :string
-  attribute :authors
+  attribute :none_authors
   attribute :buy_link, :string
   attribute :description, :string
   attribute :image, :string
@@ -27,7 +27,7 @@ class GoogleBook
       new(
         googlebooksapi_id: @item['id'],
         author: @volume_info['authors']&.first,
-        authors: @volume_info['authors'],
+        none_authors: @volume_info['none_authors'],
         buy_link: @item['saleInfo']['buyLink'],
         description: @volume_info['description'],
         image: image_url,
@@ -80,9 +80,9 @@ private
    ActiveRecord::Base.transaction do
     book.remote_image_url = image if image.present?
     book.save
-   if authors.present?
-      authors.each.with_index do |author, index|
-       author = book.authors.build(name: author)
+   if none_authors.present?
+      none_authors.each.with_index do |author, index|
+       author = book.none_authors.build(name: author)
        author.is_representation = index.zero?
        author.save
      end
