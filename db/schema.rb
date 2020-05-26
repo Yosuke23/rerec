@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_133357) do
+ActiveRecord::Schema.define(version: 2020_05_26_063550) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "googlebooksapi_id", null: false
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 2020_05_25_133357) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "none_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "multiple_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "book_id"
     t.string "name", null: false
     t.boolean "is_representation", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_none_authors_on_book_id"
+    t.index ["book_id"], name: "index_multiple_authors_on_book_id"
   end
 
   create_table "registers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_133357) do
   end
 
   add_foreign_key "books", "users"
-  add_foreign_key "none_authors", "books"
+  add_foreign_key "multiple_authors", "books"
   add_foreign_key "registers", "books"
   add_foreign_key "registers", "users"
 end
