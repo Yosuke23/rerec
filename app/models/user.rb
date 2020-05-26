@@ -1,7 +1,9 @@
 class User < ApplicationRecord
 	attr_accessor :remember_token
  	before_save :downcase_email
-
+    
+    # アバター用アップローダー
+    mount_uploader :avatar, AvatarUploader
 	# nameのヴァリデーション
 	validates :name, presence: true, length: { maximum: 39 }
 	# emailのヴァリデーション

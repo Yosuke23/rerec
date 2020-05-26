@@ -16,6 +16,8 @@
   # end
 
 class Book < ApplicationRecord
+  # google books APIから取得したimageを保存する
+  mount_uploader :image, ImageUploader
 	has_many :users, through: :registers
 	has_many :registers, dependent: :destroy
   has_many :multiple_authors, dependent: :destroy
