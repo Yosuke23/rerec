@@ -40,7 +40,7 @@ gem 'fog-core', '2.1.0'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'addressable'
-gem 'actionpack', '5.2.4.3'
+gem 'actionpack', '5.2.4.3' # 5.2.4.2からupdate 付随して"activestorage"も'5.2.4.3'に自動update
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
