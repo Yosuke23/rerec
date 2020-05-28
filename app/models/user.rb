@@ -18,7 +18,8 @@ class User < ApplicationRecord
 ## アソシエーション
      has_many :registers, dependent: :destroy
      has_many :books, through: :registers
-     
+     #has_many :like_books, through: :registers, source: :book
+
 ## ログイン機能関連メソッド
 
     # 渡された文字列のハッシュ値を返す
@@ -45,10 +46,25 @@ class User < ApplicationRecord
      BCrypt::Password.new(digest).is_password?(token)
     end
     
-     # ユーザーのログイン情報を破棄する
-     def forget
-      update_attribute(:remember_digest, nil)
-     end
+    # ユーザーのログイン情報を破棄する
+    def forget
+     update_attribute(:remember_digest, nil)
+    end
+
+    # 読んでいる本に登録
+    def register(book)
+     books << book
+    end
+
+    # 読んでいる本から削除
+    def un_register(book)
+     books.destroy(book)
+    end
+    
+    # 渡された本の情報が登録済みであればtrueを返す
+    def register?(book)
+     books.include?(book)
+    end
 
 private
 	 # メールアドレスを全て小文字に変換する

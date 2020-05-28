@@ -1,0 +1,7 @@
+ <% if logged_in? %>
+  <% if current_user.register?(@book) %>
+   <%= render 'books/un_register', book: @book %>
+  <% else %>
+   <%= render 'books/register', book: @book %>
+  <% end %>
+ <% end %>

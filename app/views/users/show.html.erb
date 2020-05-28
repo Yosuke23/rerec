@@ -5,7 +5,8 @@
     <h1>
  	 <%= gravatar_for @user %>
      <%= @user.name %>
- 	</h1>
+    </h1>
    </section>
   </aside>
+  <%= link_to "読んでいる本", reading_books_path, class: "btn btn-lg btn-success font-s" %>
  </div>

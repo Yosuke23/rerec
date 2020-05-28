@@ -1,0 +1,13 @@
+<div class="container.card.card-book">
+ <div class="row">
+  <div class="col-2.col-md-3">
+   <%= link_to book_path(book) do %>
+    <%= image_tag book.image.url, width: '100' if book.image? %>
+   <% end %>
+  </div>
+   <%= link_to book_path(book), class: 'col-9 col-md-8' do %>
+   <%= book.title %>
+   <%= book.author %>
+  <% end %>
+ </div>
+</div>

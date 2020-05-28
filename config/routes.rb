@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get  '/login',     to: 'sessions#new'
   post  '/login',     to: 'sessions#create'
   delete  '/logout',    to: 'sessions#destroy'
+  get  '/reading_books',  to:  'books#reading_books'
   resources :users
+  resources :registers, only: %i[create destroy]
   resources :books, only: %i[index create show] do
   	collection do
      get :search

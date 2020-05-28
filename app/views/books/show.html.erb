@@ -1,5 +1,10 @@
-<h1>Books#show</h1>
+<% provide :title, "本を登録する" %>
+<h1>本を登録する（Books#show）</h1>
 <%= @book.title %>
 <%= @book.author %>
-<%= image_tag @book.image.url, width: '70' %>
-<p>Find me in app/views/books/show.html.erb</p>
+<% if @book.image? %>
+ <%= image_tag @book.image.url, width: '70' %>
+<% else %>
+ <%= image_tag 'book-image.png', height: '100' %>
+<% end %>
+<%= render partial: 'books/register_area' %>
