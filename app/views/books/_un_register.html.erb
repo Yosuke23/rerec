@@ -1,3 +1,3 @@
 <%= link_to register_path(current_user.registers.find_by(book_id: book.id)), method: :delete, local: true do %>
- <%= "登録解除" %>
+ <%= "読んでいる本から登録解除" %>
 <% end %>

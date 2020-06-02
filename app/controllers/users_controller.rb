@@ -10,7 +10,7 @@ class UsersController < ApplicationController
    #@user = User.find(params[:id])
    #@books = @user.registers.order(created_at: :desc)
    @user = User.find(current_user.id)
-   @books = @user.books.order(created_at: :desc)
+   #@books = @user.reading_books.order(created_at: :desc)
   end
 
   def create

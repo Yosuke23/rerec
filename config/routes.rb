@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post  '/login',     to: 'sessions#create'
   delete  '/logout',    to: 'sessions#destroy'
   get  '/reading_books',  to:  'books#reading_books'
+  get  '/readed_books',  to:  'books#readed_books'
+  get  '/want_books',  to:  'books#want_books'
+
   resources :users
   resources :registers, only: %i[create destroy]
   resources :books, only: %i[index create show] do

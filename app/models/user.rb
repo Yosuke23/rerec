@@ -17,8 +17,9 @@ class User < ApplicationRecord
 
 ## アソシエーション
      has_many :registers, dependent: :destroy
-     has_many :books, through: :registers
-     #has_many :like_books, through: :registers, source: :book
+     has_many :reading_books, through: :registers, source: :book
+     #has_many :readed_books, through: :registers, source: :book
+     #has_many :want_books, through: :registers, source: :book
 
 ## ログイン機能関連メソッド
 
@@ -52,18 +53,18 @@ class User < ApplicationRecord
     end
 
     # 読んでいる本に登録
-    def register(book)
-     books << book
+    def reading_book_register(book)
+     reading_books << book
     end
 
     # 読んでいる本から削除
-    def un_register(book)
-     books.destroy(book)
+    def reading_book_un_register(book)
+     reading_books.destroy(book)
     end
     
     # 渡された本の情報が登録済みであればtrueを返す
-    def register?(book)
-     books.include?(book)
+    def reading_book_register?(book)
+     reading_books.include?(book)
     end
 
 private

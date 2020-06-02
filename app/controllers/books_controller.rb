@@ -22,7 +22,13 @@ class BooksController < ApplicationController
 
   def reading_books
     @book = User.find(current_user.id)
-    @books = @book.books.order(created_at: :desc)
+    @books = @book.reading_books.order(created_at: :desc)
+  end
+
+  def readed_books
+  end
+
+  def want_books
   end
 
 
