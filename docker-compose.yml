@@ -2,8 +2,6 @@ version: '3'
 services:
   db:
     image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: 'password'
     ports:
       - "4306:3306"
     env_file: db.env
