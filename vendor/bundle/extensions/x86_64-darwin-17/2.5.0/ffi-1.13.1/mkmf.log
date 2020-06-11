@@ -1,0 +1,201 @@
+"pkg-config --exists libffi"
+| pkg-config --libs libffi
+=> "-lffi\n"
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib     -lruby.2.5.1  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib     -lruby.2.5.1 -lffi -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+| pkg-config --cflags-only-I libffi
+=> "-I/usr/include/ffi\n"
+| pkg-config --cflags-only-other libffi
+=> "\n"
+| pkg-config --libs-only-l libffi
+=> "-lffi\n"
+package configuration for libffi
+cflags: 
+ldflags: 
+libs: -lffi
+
+have_library: checking for ffi_prep_closure_loc() in -lffi... -------------------- no
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -lffi  -lffi -lpthread -ldl -lobjc "
+conftest.c:15:57: error: use of undeclared identifier 'ffi_prep_closure_loc'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -lffi  -lffi -lpthread -ldl -lobjc "
+Undefined symbols for architecture x86_64:
+  "_ffi_prep_closure_loc", referenced from:
+      _t in conftest-38b984.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: extern void ffi_prep_closure_loc();
+16: int t(void) { ffi_prep_closure_loc(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for ffi_prep_closure_loc() in -llibffi... -------------------- no
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -llibffi  -lffi -lpthread -ldl -lobjc "
+conftest.c:15:57: error: use of undeclared identifier 'ffi_prep_closure_loc'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -llibffi  -lffi -lpthread -ldl -lobjc "
+ld: library not found for -llibffi
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: extern void ffi_prep_closure_loc();
+16: int t(void) { ffi_prep_closure_loc(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for ffi_prep_closure_loc() in -llibffi-8... -------------------- no
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -llibffi-8  -lffi -lpthread -ldl -lobjc "
+conftest.c:15:57: error: use of undeclared identifier 'ffi_prep_closure_loc'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))ffi_prep_closure_loc; return !p; }
+/* end */
+
+"clang -o conftest -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/x86_64-darwin17 -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/backward -I/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0 -I. -I/usr/include/ffi -I/Users/macbookpro/.rbenv/versions/2.5.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c  -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib -L. -L/Users/macbookpro/.rbenv/versions/2.5.1/lib  -fstack-protector -L/usr/local/lib      -lffi -lruby.2.5.1 -llibffi-8  -lffi -lpthread -ldl -lobjc "
+ld: library not found for -llibffi-8
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ffi.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: extern void ffi_prep_closure_loc();
+16: int t(void) { ffi_prep_closure_loc(); return 0; }
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_FFI_PREP_CIF_VAR 1
+4: #define USE_INTERNAL_LIBFFI 1
+5: #endif
+/* end */
+

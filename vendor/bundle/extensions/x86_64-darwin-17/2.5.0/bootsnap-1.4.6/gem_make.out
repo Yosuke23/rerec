@@ -1,0 +1,15 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bootsnap-1.4.6/ext/bootsnap
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-38228-ss9qgm.rb extconf.rb 
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20200611-38228-1vgzy4q/bootsnap

@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+sudo: false
+matrix:
+  fast_finish: true
+  include:
+    - rvm: 2.3
+    - rvm: 2.4
+    - rvm: 2.5
+    - rvm: 2.6
+    - rvm: jruby-9.1
+    - rvm: jruby-head
+  allow_failures:
+    - rvm: jruby-head
+notifications:
+  email: false

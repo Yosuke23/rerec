@@ -1,0 +1,13 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/json-2.3.0/ext/json
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-38228-1weea28.rb extconf.rb 
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/json-2.3.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/json-2.3.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/json-2.3.0/ext/json
+make "DESTDIR=" install

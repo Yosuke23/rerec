@@ -1,0 +1,36 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/ovirt-engine-sdk-4.4.0/ext/ovirtsdk4c
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-38228-1bbvwzp.rb extconf.rb 
+checking for xml2-config... yes
+checking for curl-config... yes
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/ovirt-engine-sdk-4.4.0/ext/ovirtsdk4c
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/ovirt-engine-sdk-4.4.0/ext/ovirtsdk4c
+make "DESTDIR="
+compiling ov_error.c
+compiling ov_http_client.c
+compiling ov_http_request.c
+compiling ov_http_response.c
+compiling ov_http_transfer.c
+compiling ov_module.c
+compiling ov_string.c
+compiling ov_xml_reader.c
+compiling ov_xml_writer.c
+ov_xml_writer.c:184:46: warning: incompatible pointer to integer conversion initializing 'const VALUE' (aka 'const unsigned long') with an expression of type 'void *' [-Wint-conversion]
+    return rb_funcall(ptr->io, STRING_ID, 0, NULL);
+                                             ^~~~
+/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include/stddef.h:105:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/Users/macbookpro/.rbenv/versions/2.5.1/include/ruby-2.5.0/ruby/ruby.h:2470:35: note: expanded from macro 'rb_funcall'
+        const VALUE rb_funcall_args[] = {__VA_ARGS__}; \
+                                         ^~~~~~~~~~~
+1 warning generated.
+compiling ovirtsdk4c.c
+linking shared-object ovirtsdk4c.bundle
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/ovirt-engine-sdk-4.4.0/ext/ovirtsdk4c
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ovirtsdk4c.bundle ./.gem.20200611-38228-1e9i1m

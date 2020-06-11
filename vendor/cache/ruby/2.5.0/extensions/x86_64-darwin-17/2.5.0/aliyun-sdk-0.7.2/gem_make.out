@@ -1,0 +1,16 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/aliyun-sdk-0.7.2/ext/crcx
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-54999-1n4y2ae.rb extconf.rb
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/aliyun-sdk-0.7.2/ext/crcx
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/aliyun-sdk-0.7.2/ext/crcx
+make "DESTDIR="
+compiling crc64_ecma.c
+compiling crcx.c
+linking shared-object aliyun/crcx.bundle
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/aliyun-sdk-0.7.2/ext/crcx
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 crcx.bundle ./.gem.20200611-54999-14d1hhm/aliyun

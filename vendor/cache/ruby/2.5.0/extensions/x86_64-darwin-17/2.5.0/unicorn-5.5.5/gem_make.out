@@ -1,0 +1,24 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/unicorn-5.5.5/ext/unicorn_http
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-54999-xuzk8l.rb extconf.rb
+checking for SIZEOF_OFF_T in ruby.h... yes
+checking for SIZEOF_SIZE_T in ruby.h... yes
+checking for SIZEOF_LONG in ruby.h... yes
+checking for rb_str_set_len() in ruby.h... yes
+checking for rb_hash_clear() in ruby.h... yes
+checking for gmtime_r() in time.h... yes
+checking if String#-@ (str_uminus) dedupes... yes
+checking if Hash#[]= (rb_hash_aset) dedupes... no, needs Ruby 2.6+
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/unicorn-5.5.5/ext/unicorn_http
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/unicorn-5.5.5/ext/unicorn_http
+make "DESTDIR="
+compiling httpdate.c
+compiling unicorn_http.c
+linking shared-object unicorn_http.bundle
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/unicorn-5.5.5/ext/unicorn_http
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unicorn_http.bundle ./.gem.20200611-54999-12he0pw

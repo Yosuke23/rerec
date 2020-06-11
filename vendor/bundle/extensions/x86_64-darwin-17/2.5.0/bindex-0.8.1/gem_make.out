@@ -1,0 +1,15 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200611-38228-j1hxhu.rb extconf.rb 
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/macbookpro/apps/rerec/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20200611-38228-15c0d65/skiptrace/internal
