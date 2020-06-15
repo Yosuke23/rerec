@@ -1,11 +1,14 @@
 <% provide :title, "本を登録する" %>
-<h1>本を登録する（Books#show）</h1>
-<%= @book.title %>
-<%= @book.author %>
+<div style="text-align:center">
+<h3>本を登録する</h3>
 <% if @book.image? %>
- <%= image_tag @book.image.url, width: '70' %>
+ <%= image_tag @book.image.url, width: '150' %><br>
 <% else %>
- <%= image_tag 'book-image.png', height: '100' %>
+ <%= image_tag 'book-image.png', height: '150' %><br>
 <% end %>
-<%= render partial: 'books/register_area' %>
-<%= render partial: 'books/second_register_area' %>
+ <%= @book.title %>
+ <%= @book.author %><br>
+ <%= render partial: 'books/register_area' %><br>
+ <%= render partial: 'books/second_register_area' %><br>
+ <%= render partial: 'books/third_register_area' %><br>
+</div>

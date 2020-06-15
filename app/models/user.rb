@@ -18,10 +18,11 @@ class User < ApplicationRecord
 ## アソシエーション
      has_many :registers, dependent: :destroy
      has_many :second_registers, dependent: :destroy
+     has_many :third_registers, dependent: :destroy
+
      has_many :reading_books, through: :registers, source: :book
      has_many :readed_books, through: :second_registers, source: :book
-     #has_many :readed_books, through: :registers, source: :book
-     #has_many :want_books, through: :registers, source: :book
+     has_many :want_books, through: :third_registers, source: :book
 
 ## ログイン機能関連メソッド
 
@@ -83,7 +84,22 @@ class User < ApplicationRecord
     def readed_book_register?(book)
      readed_books.include?(book)
     end
-
+    
+    ### 読みたい本に登録
+    def want_book_register(book)
+     want_books << book
+    end
+    
+    ### 読みたい本から削除
+    def want_book_un_register(book)
+     want_books.destroy(book)
+    end
+    
+    ### 渡された本の情報が登録済みであればtrueを返す
+    def want_book_register?(book)
+     want_books.include?(book)
+    end
+    
 private
 	 # メールアドレスを全て小文字に変換する
 	  def downcase_email

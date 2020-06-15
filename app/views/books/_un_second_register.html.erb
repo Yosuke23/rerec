@@ -1,4 +1,6 @@
-<%= link_to second_register_path(current_user.registers.find_by(book_id: book.id)), 
+<div class="btn btn-sm btn-info font-s">
+ <%= link_to second_register_path(current_user.second_registers.find_by(book_id: book.id)), 
 method: :delete, local: true do %>
- <%= "読んだ本から登録解除" %> 
-<% end %> 
+  <%= "読んだ本から登録解除" %> 
+ <% end %>
+</div>
