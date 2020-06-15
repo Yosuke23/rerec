@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_033654) do
+ActiveRecord::Schema.define(version: 2020_06_15_023433) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "googlebooksapi_id", null: false
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_06_02_033654) do
     t.index ["user_id"], name: "index_registers_on_user_id"
   end
 
+  create_table "second_registers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_second_registers_on_book_id"
+    t.index ["user_id"], name: "index_second_registers_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -64,4 +73,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_033654) do
   add_foreign_key "multiple_authors", "books"
   add_foreign_key "registers", "books"
   add_foreign_key "registers", "users"
+  add_foreign_key "second_registers", "books"
+  add_foreign_key "second_registers", "users"
 end
