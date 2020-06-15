@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'second_registers/create'
+  get 'second_registers/destroy'
   get 'registers/create'
   get 'registers/destroy'
   get 'sessions/new'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :registers, only: %i[create destroy]
+  resources :second_registers, only: %i[create destroy]
   resources :books, only: %i[index create show] do
   	collection do
      get :search

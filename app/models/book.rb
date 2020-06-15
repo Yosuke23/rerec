@@ -19,9 +19,14 @@ class Book < ApplicationRecord
   # google books APIから取得したimageを保存する
   mount_uploader :image, ImageUploader
   has_many :users, through: :registers
+  has_many :users, through: :second_registers
+
   has_many :registers, dependent: :destroy
+  has_many :second_registers, dependent: :destroy
+
   has_many :multiple_authors, dependent: :destroy
   accepts_nested_attributes_for :registers
+  accepts_nested_attributes_for :second_registers
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :googlebooksapi_id, presence: true,

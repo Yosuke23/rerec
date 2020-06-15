@@ -1,0 +1,7 @@
+<% if logged_in? %>
+ <% if current_user.readed_book_register?(@book) %> 
+　<%= render 'books/un_second_register', book: @book %> 
+ <% else %>
+<%= render 'books/second_register', book: @book %> 
+ <% end %> 
+<% end %> 

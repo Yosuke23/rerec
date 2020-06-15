@@ -17,7 +17,9 @@ class User < ApplicationRecord
 
 ## アソシエーション
      has_many :registers, dependent: :destroy
+     has_many :second_registers, dependent: :destroy
      has_many :reading_books, through: :registers, source: :book
+     has_many :readed_books, through: :second_registers, source: :book
      #has_many :readed_books, through: :registers, source: :book
      #has_many :want_books, through: :registers, source: :book
 
@@ -65,6 +67,21 @@ class User < ApplicationRecord
     # 渡された本の情報が登録済みであればtrueを返す
     def reading_book_register?(book)
      reading_books.include?(book)
+    end
+    
+    ## 読んだ本に登録
+    def readed_book_register(book)
+     readed_books << book
+    end
+    
+    ## 読んだ本から削除
+    def readed_book_un_register(book)
+     readed_books.destroy(book)
+    end
+    
+    ## 渡された本の情報が登録済みであればtrueを返す
+    def readed_book_register?(book)
+     readed_books.include?(book)
     end
 
 private

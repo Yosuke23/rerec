@@ -26,6 +26,8 @@ class BooksController < ApplicationController
   end
 
   def readed_books
+    @book = User.find(current_user.id)
+    @books = @book.readed_books.order(created_at: :desc)
   end
 
   def want_books
