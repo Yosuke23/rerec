@@ -6,6 +6,14 @@ services:
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
       - "4306:3306"
+    volumes:
+      #- .:/app:cached # cached=>ボリュームの読み込みが高速化
+      - .:/app:delegated # delegated=>読み込みに加えて、書き込みも高速化
+      # 1. exclude volumes
+      - /app/vendor
+      - /app/tmp
+      - /app/log
+      - /app/.git
 
   web:
     build: .
