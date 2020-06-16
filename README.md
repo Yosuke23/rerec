@@ -1,91 +1,35 @@
 # REREC
 
-RERECはYosuke23の個人開発による、日々の読んだ本のページ数を記録して、ページ数や読んだタイトルや読んだ本の累計記録を取り、評価や、コメントを共有できる読書共有サイトです。
+読書記録（読んでいる、読んだ本の感想日記、読んだ本のページ数、本の数）を
+簡単な操作で管理することができ、手軽に読本管理ができるWEBサービスです。
 
+## 動機
 
-## Description
+読んでいる本、読んだ本別に感想日記を書いたり、その記録から検索して、過去の自身の読本記録を確認するような読本管理アプリが欲しかっため、自身の読本管理の為に作成に取り掛かりました。
 
-### CTPT frame work
+## 現在の主要機能
 
-#### Concept
+- 本の検索、登録
+- 検索した本をユーザーの「読んでいる本」「読んだ本」「読みたい本」のいずれかに登録
 
-- 
+## インフラ（予定）
 
-#### Target
+クラウドインフラとして現在のデファクトスタンダードであるAWSを選択
 
-- 読書愛好者層
+AWS: VPC / EC2 / RDS / S3 / ElastiCache / Route53 / IAM / ACM
 
-##### The reason
-- 自分の読書記録（本のタイトル/著者/日毎の読んだページ数/コメント）を取ることで、読書ページのアベレージを知りたい
-- 読んだ本の自身の評価やコメント、メモ記録を簡単にできるようにしたい
-- 記録数が多くなっても検索機能で、読んだタイトルと自分の評価やコメント簡単に検索したい
-- 読んだ本の詳細記録がいつでも確認できるようにしたい
-- 読んだ本の感動を共有しあいたい
+## 開発環境
 
-#### Process
+チーム開発での開発環境構築を想定し、Docker,docker-composeを使用いたしました。
 
-1. Product
+[Dockerfile](https://github.com/Yosuke23/rerec/blob/master/Dockerfile), [docker-compose.yml](https://github.com/Yosuke23/rerec/blob/master/docker-compose.yml)
 
-- Railsを用いて会員登録システムを構築
-- ユーザーが自由に読書記録、コメントを投稿できるようにする
+確認手順は以下の通りです。
 
-2. Place
+$ git clone git@github.com:Yosuke23/rerec.git
 
-- AWS（Amazon Web Services）を用いてWeb上に公開
+$ docker-compose build
 
-3. Price
+$ docker-compose run web rails db:create db:migrate db:seed
 
-- 完全無料
-
-4. Promotion
-
-- 特になし
-
-5. Process
-
-- その友人間の口コミで広げる
-
-6. Profile
-
-- 特になし
-
-#### Tool
-
-##### Development environment
-
-* Infrastructure
-  * TDD
-    * Vagrant
-
-  * Platform
-    * AWS
-
-  * Version control
-    * Git
-
-  * Web server 
-    * Production
-      * puma
-
-  * DB
-    * Development
-      * MySQL
-    * Production
-      * MySQL
-
-  * Test-driven development
-    * Gurad-spec(Minitest)
-
-  * Front end language
-    * HTML
-    * SCSS
-    * JavaScript(jQUery)
-
-  * Back end language
-    * Ruby(2.5.1)
-    * Ruby on Rails(5.2.4.2)
-
-
-## Author
-
-[Yosuke23](https://github.com/Yosuke23/)
+$ docker-compose up -d
