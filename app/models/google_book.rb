@@ -108,6 +108,7 @@ private
       googlebooksapi_id: googlebooksapi_id,
       published_at: published_at,
       title: title,
+      page_count: page_count,
       buy_link: buy_link
     )
   end
