@@ -12,3 +12,7 @@
   <%= link_to "読んだ本", readed_books_path, class: "btn btn-lg btn-info font-s" %>
   <%= link_to "読みたい本", want_books_path, class: "btn btn-lg btn-success font-s" %>
  </div>
+ <h3>今読んでいる本</h3>
+  <%= render @books %>
+   <p>読んだ本の合計：<%= @book_count %>冊</p>
+   <p>読んだページの合計：<%= @page_count %>ページ</p>

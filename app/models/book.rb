@@ -25,7 +25,6 @@ class Book < ApplicationRecord
   has_many :registers, dependent: :destroy
   has_many :second_registers, dependent: :destroy
   has_many :third_registers, dependent: :destroy
-
   has_many :multiple_authors, dependent: :destroy
   accepts_nested_attributes_for :registers
   accepts_nested_attributes_for :second_registers

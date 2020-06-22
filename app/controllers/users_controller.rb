@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   end
 
   def show
-   #@user = User.find(params[:id])
-   #@books = @user.registers.order(created_at: :desc)
    @user = User.find(current_user.id)
-   #@books = @user.reading_books.order(created_at: :desc)
+   @books = @user.reading_books.order(created_at: :desc)
+   @page_count = @user.readed_books.pluck(:page_count).sum
+   @book_count = @user.readed_books.count
   end
 
   def create

@@ -4,7 +4,7 @@ class RegistersController < ApplicationController
   def create
    @book = Book.find(params[:book_id])
    current_user.reading_book_register(@book)
-   #redirect_to @book
+    #redirect_to @book
    redirect_to reading_books_path
   end
 
