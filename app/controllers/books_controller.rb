@@ -11,7 +11,8 @@ class BooksController < ApplicationController
    if (@book = google_book.find_book_or_save)
     redirect_to @book
    else
-    redirect_to search_books_path, danger: 'ページの表示に失敗しました'
+    redirect_to search_books_path
+    flash[:danger] = "ページの表示に失敗しました"
    end
   end
 

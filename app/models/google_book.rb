@@ -27,15 +27,15 @@ class GoogleBook
       new(
         googlebooksapi_id: @item['id'],
         author: @volume_info['authors']&.first,
-        multiple_authors: @volume_info['multiple_authors'],
+        multiple_authors: @volume_info['authors'],
         buy_link: @item['saleInfo']['buyLink'],
         description: @volume_info['description'],
-        image: image_url,
+        image: image_url || "https://yosuke23.s3.amazonaws.com/uploads/micropost/picture/320/thumb_book-image.png",
         published_at: @volume_info['publishedDate'],
         title: @volume_info['title'],
         publisher: @volume_info['publisher'],
         web_reader_link: reader_link_url,
-        page_count: @volume_info['pageCount']
+        page_count: page_counter || 0
       )
     end
 
@@ -58,12 +58,16 @@ class GoogleBook
 
 private
 
-    def image_url
-     @volume_info['imageLinks']['smallThumbnail'] if @volume_info['imageLinks'].present?
-    end
-
+   def image_url
+    @volume_info['imageLinks']['smallThumbnail'] if @volume_info['imageLinks'].present?
+   end
+ 
     def reader_link_url
      @item['accessInfo']['webReaderLink'] if @item['accessInfo'].present?
+    end
+    
+    def page_counter
+     @volume_info['pageCount'] if @volume_info['pageCount'].present?
     end
   end
 
