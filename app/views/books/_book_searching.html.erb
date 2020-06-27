@@ -11,7 +11,8 @@
 
    <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-9 col-lg-8', method: :post do %>
      <%= book.title %>
-     <%= book.author %>
+     <%= book.author %><br>
+     <%= book.description %>
    <% end %>
   </div>
  </div>
