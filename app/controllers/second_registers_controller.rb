@@ -5,7 +5,7 @@ class SecondRegistersController < ApplicationController
    @book = Book.find(params[:book_id])
    current_user.readed_book_register(@book)
    if @book[:page_count] == 0
-    flash[:danger]= "『#{@book[:title]}』はページ数の登録が無い為、読んだページに加算されません"
+    flash[:danger] = "『#{@book[:title]}』はページ数の登録が無い為、読んだページに加算されません"
    else
     flash[:info] = "読了した『#{@book[:title]}』のページ数（#{@book[:page_count]}P）を読んだページの合計に加算しました"
    end

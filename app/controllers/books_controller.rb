@@ -26,9 +26,11 @@ class BooksController < ApplicationController
     @books = @book.reading_books.order(created_at: :desc)
   end
 
-  def readed_books
+  def readed_books  
    @book = User.find(current_user.id)
    @books = @book.readed_books.order(created_at: :desc)
+   @page_count = @book.readed_books.pluck(:page_count).sum
+   @book_count = @book.readed_books.count
   end
 
   def want_books
