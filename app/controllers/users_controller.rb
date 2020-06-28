@@ -11,6 +11,9 @@ class UsersController < ApplicationController
    @books = @user.reading_books.order(created_at: :desc)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
+   @month_book_count = SecondRegister.group("MONTH(created_at)").count
+   @year_book_count = SecondRegister.group("YEAR(created_at)").count
+   @month_year_book_count = SecondRegister.group("YEAR(created_at)").group("MONTH(created_at)").count
   end
 
   def create

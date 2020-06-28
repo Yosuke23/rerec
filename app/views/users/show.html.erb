@@ -14,5 +14,8 @@
  </div>
  <h3>今読んでいる本</h3>
   <%= render @books %>
-   <p>読んだ本の合計：<%= @book_count %>冊</p>
+   <p>読んだ本の合計（総計）：<%= @book_count %>冊</p>
    <p>読んだページの合計：<%= @page_count %>ページ</p>
+   <p>今月読んだ本の合計：<%= @month_book_count %>冊</p>
+   <p>2020年に読んだ本の合計：<%= @year_book_count %>冊</p>
+   <p>2020年に読んだ本の合計(月ごと)：<%= @month_year_book_count %>冊</p>
