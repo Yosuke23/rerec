@@ -1,6 +1,6 @@
 <div class="btn btn-sm btn-success font-s">
  <%= link_to third_register_path(current_user.third_registers.find_by(book_id: book.id)), 
 method: :delete, local: true do %>
-  <%= "読みたい本から登録解除" %> 
+  <%= "読みたい本から除外する" %> 
  <% end %>
 </div>
