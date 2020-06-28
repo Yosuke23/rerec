@@ -1,7 +1,0 @@
-<% if logged_in? %>
- <% if current_user.want_book_register?(@book) %>
-  <%= render 'books/un_third_register', book: @book %>
- <% else %>
-  <%= render 'books/third_register', book: @book %>
- <% end %> 
-<% end %>
