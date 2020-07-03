@@ -2,7 +2,7 @@ class BooksController < ApplicationController
    before_action :logged_in_user, only: [:create]
  
   def index
-   @book = User.find(current_user.id)
+   @user = User.find(current_user.id)
    @books = Book.all
   end
   
@@ -22,23 +22,23 @@ class BooksController < ApplicationController
   end
 
   def reading_books
-    @book = User.find(current_user.id)
-    @books = @book.reading_books.order(created_at: :desc)
+    @user = User.find(current_user.id)
+    @books = @user.reading_books.order(created_at: :desc)
   end
 
-  def readed_books  
-   @book = User.find(current_user.id)
-   @books = @book.readed_books.order(created_at: :desc)
-   @page_count = @book.readed_books.pluck(:page_count).sum
-   @book_count = @book.readed_books.count
-   @month_book_count = SecondRegister.group("MONTH(created_at)").count
-   @year_book_count = SecondRegister.group("YEAR(created_at)").count
-   @month_year_book_count = SecondRegister.group("YEAR(created_at)").group("MONTH(created_at)").count
+  def readed_books
+   @user = User.find(current_user.id)
+   @books = @user.readed_books.order(created_at: :desc)
+   @page_count = @user.readed_books.pluck(:page_count).sum
+   @book_count = @user.readed_books.count
+   @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
+   @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
+   @month_year_book_count = SecondRegister.where(user_id: current_user.id).group("year(created_at)").group("MONTH(created_at)").count
   end
 
   def want_books
-   @book = User.find(current_user.id)
-   @books = @book.want_books.order(created_at: :desc)
+   @user = User.find(current_user.id)
+   @books = @user.want_books.order(created_at: :desc)
   end
 
   def search
