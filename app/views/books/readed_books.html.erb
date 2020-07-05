@@ -3,7 +3,7 @@
 　<hr>
  <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
  <p><% now = Time.current %><%= now.month %>月に読んだページ数：<%= @month_page_count %>ページ</p>
- <p>読んだ本の合計（総計）：<%= @book_count %>冊</p>
+ <p>読んだ本の合計：<%= @book_count %>冊</p>
  <p>読んだページの合計：<%= @page_count %>ページ</p>
 　<hr>
 <h4>
@@ -39,4 +39,3 @@
 </table><br>
 </h4>
 　<hr>
-<%= render @books %>
