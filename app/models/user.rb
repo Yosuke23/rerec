@@ -25,11 +25,10 @@ class User < ApplicationRecord
      has_many :want_books, through: :third_registers, source: :book
 
 ## ログイン機能関連メソッド
-
     # 渡された文字列のハッシュ値を返す
-	def self.digest(string)
-	 cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt.Engine.cost
-	 BCrypt::Password.create(string, cost: cost)
+    def self.digest(string)
+     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+     BCrypt::Password.create(string, cost: cost)
     end
 
     # ランダムなトークンを返す
@@ -40,7 +39,7 @@ class User < ApplicationRecord
     # 永続セッションのためにユーザーをデータベースに記憶する
     def remember
      self.remember_token = User.new_token
-     user.update_attribute(:remember_digest, User.digest(remember_token))
+     update_attribute(:remember_digest, User.digest(remember_token))
     end
 
     # 渡されたトークンがダイジェストと一致したらtrueを返す

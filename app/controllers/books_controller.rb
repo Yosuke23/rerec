@@ -27,13 +27,16 @@ class BooksController < ApplicationController
   end
 
   def readed_books
+   date = Date.today
    @user = User.find(current_user.id)
    @books = @user.readed_books.order(created_at: :desc)
+   @books_created_at = @user.readed_books.pluck(:created_at)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
+   @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count
+   @month_page_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).pluck(:page_count).sum
    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
-   @month_year_book_count = SecondRegister.where(user_id: current_user.id).group("year(created_at)").group("MONTH(created_at)").count
   end
 
   def want_books

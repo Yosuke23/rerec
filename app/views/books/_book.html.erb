@@ -7,7 +7,10 @@
   </div>
    <%= link_to book_path(book), class: 'col-9 col-md-8' do %>
    <%= book.title %>
-   <%= book.author %>
+   <%= book.author %><br>
+   登録日：<%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分 (%a)") %><br>
+   ページ数：<%= book.page_count %>ページ
+
   <% end %>
  </div>
 </div>

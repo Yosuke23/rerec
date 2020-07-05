@@ -1,8 +1,42 @@
 <% provide :title, "読んだ本" %>
 <h1>読んだ本</h1>
- <p>読んだ本の合計：<%= @book_count %>冊</p>
+　<hr>
+ <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
+ <p><% now = Time.current %><%= now.month %>月に読んだページ数：<%= @month_page_count %>ページ</p>
+ <p>読んだ本の合計（総計）：<%= @book_count %>冊</p>
  <p>読んだページの合計：<%= @page_count %>ページ</p>
- <p>今月読んだ本の合計：<%= @month_book_count %>冊</p>
- <p>2020年に読んだ本の合計：<%= @year_book_count %>冊</p>
- <p>2020年に読んだ本の合計(月ごと)：<%= @month_year_book_count %>冊</p>
+　<hr>
+<h4>
+<table border="1">
+ <tr>
+  <th>読んだ月</th>
+  <th>読んだ数</th>
+ </tr>
+ <tr>
+  <td><% @month_book_count.keys.each do |month| %>
+   <%= month %>月<br>
+  <% end %></td>
+  <td><% @month_book_count.values.each do |count| %>
+   <%= count %>冊<br>
+  <% end %></td>
+ </tr>
+</table><br>
+</h4>
+<h4>
+<table border="1">
+ <tr>
+  <th>読んだ年</th>
+  <th>読んだ数</th>
+ </tr>
+ <tr>
+  <td><% @year_book_count.keys.each do |year| %>
+   <%= year %>年<br>
+  <% end %></td>
+  <td><% @year_book_count.values.each do |book| %>
+   <%= book %>冊<br>
+  <% end %></td>
+ </tr>
+</table><br>
+</h4>
+　<hr>
 <%= render @books %>
