@@ -1,33 +1,39 @@
 <%= provide(:title, @user.name) %>
- <div class="row">
-  <aside class="col-md-4">
-   <section>
-    <h1>
- 	 <%= gravatar_for @user %>
-     <%= @user.name %>
-    </h1>
-   </section>
-  </aside>
+ <h1 style="font-weight: bold; margin-top: -30px;">マイページ</h1>
+  <div class="row">
+   <aside class="col-md-4">
+    <section>
+     <%= gravatar_for @user %>
+     <h3 style="font-weight: bold; margin-top: 20px;"><%= @user.name %></h3>
+    </section>
+   </aside>
+ <div style="margin-top: 30px;"> 
   <%= link_to "読んでいる本", reading_books_path, class: "btn btn-lg btn-danger font-s" %>
   <%= link_to "読んだ本", readed_books_path, class: "btn btn-lg btn-info font-s" %>
   <%= link_to "読みたい本", want_books_path, class: "btn btn-lg btn-success font-s" %>
  </div>
-  <hr>
- <h3>今読んでいる本</h3>
-  <hr>
-  <%= render @books %>
-  <hr>
-  <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
+ </div>
+<hr style="border-top: double;">
+ <h3 style="font-weight: bold;">今読んでいる本</h3>
+<hr style="border-bottom: double;">
+ <% if @books.any? %> 
+  <%= render @books %> 
+ <% else %> 
+  <p>現在読んでいる本はありません</p>
+ <% end %>
+<hr style="border-top: double;">
+ <h3 style="font-weight: bold;">読んだ本の累計</h3>
+<hr style="border-top: double;">  <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
   <p><% now = Time.current %><%= now.month %>月に読んだページ数：<%= @month_page_count %>ページ</p>
   <p>読んだ本の合計（総計）：<%= @book_count %>冊</p>
   <p>読んだページの合計：<%= @page_count %>ページ</p>
-  <hr>
+<hr>
 <h4>
-<table border="1">
- <tr>
-  <th>読んだ月</th>
-  <th>読んだ数</th>
- </tr>
+ <table border="1">
+  <tr>
+   <th>読んだ月</th>
+   <th>読んだ数</th>
+  </tr>
  <tr>
   <td><% @month_book_count.keys.each do |month| %>
    <%= month %>月<br>
@@ -54,3 +60,4 @@
  </tr>
 </table>
 </h4>
+<hr style="border-bottom: double;">

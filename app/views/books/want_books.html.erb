@@ -1,3 +1,8 @@
 <% provide :title, "読みたい本" %>
-<h1>読みたい本</h1>
-<%= render @books %>
+<hr style="border-top: double; font-size: bold;">
+ <h3 style="font-weight: bold;">読みたい本</h3>
+<hr style="border-bottom: double;"> <% if @books.any? %> 
+  <%= render @books %> 
+ <% else %> 
+  <p>現在読みたい本はありません</p>
+ <% end %>

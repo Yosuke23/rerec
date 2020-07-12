@@ -1,11 +1,12 @@
 <% provide :title, "読んだ本" %>
-<h1>読んだ本</h1>
-　<hr>
+<hr style="border-top: double;">
+ <h3 style="font-weight: bold;">読んだ本の累計</h3>
+<hr style="border-bottom: double;">
  <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
  <p><% now = Time.current %><%= now.month %>月に読んだページ数：<%= @month_page_count %>ページ</p>
  <p>読んだ本の合計：<%= @book_count %>冊</p>
  <p>読んだページの合計：<%= @page_count %>ページ</p>
-　<hr>
+<hr>
 <h4>
 <table border="1">
  <tr>
@@ -38,5 +39,18 @@
  </tr>
 </table><br>
 </h4>
-　<hr>
-<%= render @books %>
+<hr style="border-top: double;">
+ <h3 style="font-weight: bold;">読んだ本</h3>
+<hr style="border-bottom: double;">
+ <% if @books.any? %> 
+  <%= render @books %> 
+ <% else %> 
+  <p>現在読みおえた本はありません</p>
+ <% end %>
+<hr style="border-top: double;">
+ <% if @impressions.any? %>
+ <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
+ <hr style="border-bottom: double;">
+  <%= paginate @impressions %>
+  <%= render @impressions %>
+ <% end %>

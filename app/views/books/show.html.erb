@@ -1,6 +1,6 @@
 <% provide :title, "本を登録する" %>
 <div style="text-align:center">
-<h3>本を登録する</h3>
+<h3>読書メモ/本の登録</h3>
 <% if @book.image? %>
  <%= image_tag @book.image.url, width: '150' %><br>
 <% else %>
@@ -8,6 +8,7 @@
 <% end %>
  <%= @book.title %>
  <%= @book.author %><br>
+ <%= render partial: 'shared/reading_from_search' %><br>
  <%= render partial: 'partial_for_register_books/register_area' %><br>
  <%= render partial: 'partial_for_register_books/second_register_area' %><br>
  <%= render partial: 'partial_for_register_books/third_register_area' %><br>

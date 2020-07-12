@@ -19,7 +19,8 @@ class User < ApplicationRecord
      has_many :registers, dependent: :destroy
      has_many :second_registers, dependent: :destroy
      has_many :third_registers, dependent: :destroy
-
+     has_many :impressions, dependent: :destroy
+     
      has_many :reading_books, through: :registers, source: :book
      has_many :readed_books, through: :second_registers, source: :book
      has_many :want_books, through: :third_registers, source: :book

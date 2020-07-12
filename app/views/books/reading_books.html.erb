@@ -1,3 +1,16 @@
 <% provide :title, "読んでいる本" %>
-<h1>読んでいる本</h1>
-<%= render @books %>
+<hr style="border-top: double; font-size: bold;">
+ <h3 style="font-weight: bold;">読んでいる本</h3>
+<hr style="border-bottom: double;">
+ <% if @books.any? %> 
+  <%= render @books %> 
+ <% else %> 
+  <p>現在読んでいる本はありません</p>
+ <% end %>
+<hr style="border-top: double;">
+ <% if @impressions.any? %>
+ <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
+ <hr style="border-bottom: double;">
+  <%= paginate @impressions %>
+  <%= render @impressions %>
+ <% end %>

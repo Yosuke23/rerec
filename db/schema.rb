@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_064019) do
+ActiveRecord::Schema.define(version: 2020_07_09_061709) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "googlebooksapi_id", null: false
@@ -29,6 +29,23 @@ ActiveRecord::Schema.define(version: 2020_06_19_064019) do
     t.index ["googlebooksapi_id"], name: "index_books_on_googlebooksapi_id", unique: true
     t.index ["user_id", "created_at", "author", "title"], name: "index_books_on_user_id_and_created_at_and_author_and_title"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.bigint "register_id"
+    t.bigint "second_register_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "title"
+    t.string "image"
+    t.index ["register_id", "created_at"], name: "index_impressions_on_register_id_and_created_at"
+    t.index ["register_id"], name: "index_impressions_on_register_id"
+    t.index ["second_register_id", "created_at"], name: "index_impressions_on_second_register_id_and_created_at"
+    t.index ["second_register_id"], name: "index_impressions_on_second_register_id"
+    t.index ["user_id", "created_at"], name: "index_impressions_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "multiple_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,6 +97,9 @@ ActiveRecord::Schema.define(version: 2020_06_19_064019) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "impressions", "registers"
+  add_foreign_key "impressions", "second_registers"
+  add_foreign_key "impressions", "users"
   add_foreign_key "multiple_authors", "books"
   add_foreign_key "registers", "books"
   add_foreign_key "registers", "users"

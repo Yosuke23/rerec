@@ -24,6 +24,9 @@ class BooksController < ApplicationController
   def reading_books
     @user = User.find(current_user.id)
     @books = @user.reading_books.order(created_at: :desc)
+    @users = @user.impressions
+    @impressions = Kaminari.paginate_array(@users).page(params[:page])
+    @impression = current_user.impressions.build if logged_in?
   end
 
   def readed_books
@@ -37,6 +40,9 @@ class BooksController < ApplicationController
    @month_page_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).pluck(:page_count).sum
    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
+   @users = @user.impressions
+   @impressions = Kaminari.paginate_array(@users).page(params[:page])
+   @impression = current_user.impressions.build if logged_in?
   end
 
   def want_books

@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   delete  '/logout',    to: 'sessions#destroy'
   get  '/reading_books',  to:  'books#reading_books'
   get  '/readed_books',  to:  'books#readed_books'
+  post  '/readed_books',  to:  'books#readed_books'
   get  '/want_books',  to:  'books#want_books'
+  get  '/impressions_title',  to:  'impressions#impressions_title'
+  post  '/impressions_title',  to:  'impressions#impressions_title'
 
   resources :users
   resources :registers, only: %i[create destroy]
@@ -30,4 +33,5 @@ Rails.application.routes.draw do
      get :search
     end		
   end
+  resources :impressions, only: %i[create destroy]
 end
