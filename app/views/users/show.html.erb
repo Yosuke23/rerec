@@ -60,4 +60,10 @@
  </tr>
 </table>
 </h4>
-<hr style="border-bottom: double;">
+<hr style="border-top: double;">
+ <% if @impressions.any? %>
+ <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
+ <hr style="border-bottom: double;">
+  <%= paginate @impressions %>
+  <%= render @impressions %>
+ <% end %>

@@ -1,6 +1,6 @@
 <% provide :title, "本を登録する" %>
 <div style="text-align:center">
-<h3>読書メモ/本の登録</h3>
+<h3 style="font-weight: bold;">読書メモ/本の登録</h3>
 <% if @book.image? %>
  <%= image_tag @book.image.url, width: '150' %><br>
 <% else %>
