@@ -1,6 +1,7 @@
 <div class="container.card.card-book">
  <div class="row">
   <div class="col-2.col-md-3">
+  <div style="margin: 0px 40px 8px;">
    <%= link_to book_path(book) do %>
     <%= image_tag book.image.url, width: '100' if book.image? %>
    <% end %>
@@ -10,8 +11,9 @@
    <% end %><br>
     著作：<%= book.title %><br>
     著者：<%= book.author %><br>
-    登録日：<%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分 (%a)") %><br>
+    登録日：<%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(book.created_at)%>前）<br><br>
     ページ数：<%= book.page_count %>ページ<br>
+  </div>
  </div>
 </div>
 <hr>

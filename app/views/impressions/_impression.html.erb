@@ -1,14 +1,11 @@
-<!--<li id="impression-<%= impression.id %>">-->
-  <%#= link_to gravatar_for(impression.user, size: 50), impression.user%>
-  <%# <span class="user"> %>
-<%#= link_to impression.user.name, impression.user %>
- <%# </span> %>
-  <%# <span class="content"> %>
+ <div style="margin: 0px 40px 10px;">
   <img src="<%= impression.image %>"><br>
+ </div>
   著作：<%= impression.title %><br>
   読書メモ：<%= impression.content %><br>
-  記録日：<%= impression.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分 (%a)") %><br>
-  <hr>
-  <%# </span> %>
-  <%# <span class="timestamp"> %>
-<%#= time_ago_in_words(impression.created_at)ago. %>
+  投稿日：<%= impression.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(impression.created_at)%>前）<br>
+ <% if current_user?(impression.user) %>
+  <%= link_to "削除", impression, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+ <% end %>
+ <hr>
+ 

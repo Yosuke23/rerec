@@ -1,16 +1,25 @@
 class ImpressionsController < ApplicationController
-
+ before_action :logged_in_user, only: [:create, :destroy] 
+ before_action :correct_user,   only: :destroy
+ 
  def create
-   @impression = current_user.impressions.create(impression_params)
+   @impression = current_user.impressions.build(impression_params)
   if @impression.save
    redirect_to current_user
    flash[:success] = "投稿が完了しました"
   else
-    redirect_to request.referrer || current_user
-    flash[:danger] = "投稿内容に誤りがあります。タイトルとメモ欄は必ず入力してください"
+   redirect_to request.referrer || current_user
+   flash[:danger] = "投稿内容に誤りがあります。タイトルとメモ欄は必ず入力してください"
   end
  end
-
+ 
+ def destroy
+  @impression = current_user.impressions.find(params[:id])
+  @impression.destroy
+  flash[:success] = "投稿を削除しました"
+  redirect_to request.referrer || current_user
+ end
+ 
  def impressions_title
   @user = User.find(current_user.id)
   @users = @user.impressions
@@ -23,6 +32,11 @@ class ImpressionsController < ApplicationController
  private
 
   def impression_params
-    params.require(:impression).permit(:content, :title, :image)
+   params.require(:impression).permit(:content, :title, :image)
+  end
+  
+  def correct_user
+   @impression = current_user.impressions.find_by(id: params[:id])
+   redirect_to root_url if @impression.nil?
   end
 end

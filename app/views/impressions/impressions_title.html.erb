@@ -6,7 +6,7 @@
    <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
-   <%= f.hidden_field :image, value: @book_image %>  
+   <%= f.hidden_field :image, value: @book_image %>
    
    <%= f.label "本のタイトル" %>
    <%= f.text_field :title, value: @book_title, placeholder: 'タイトル入力は必須です', class: 'form-control' %>
