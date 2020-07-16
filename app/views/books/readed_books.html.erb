@@ -1,19 +1,10 @@
 <% provide :title, "読んだ本" %>
- <div style="margin-top: -50px;">
- <button type="button" class="btn btn-outline-success font-s">
-  <%= link_to "本をさがす", search_books_path %>
- </button>
- <button type="button" class="btn btn-outline-success font-s">
-  <%= link_to "読んでいる本", reading_books_path %>
- </button>
- <button type="button" class="btn btn-outline-success font-s">
-  <%= link_to "読んだ本", readed_books_path %>
- </button>
- <button type="button" class="btn btn-outline-success font-s">
-  <%= link_to "読みたい本", want_books_path %>
- </button>
- </div>
-
+  <div style="margin-top: 30px;">
+   <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
+   <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
+   <%= link_to "読んだ本", readed_books_path, class: "btn-border" %>
+   <%= link_to "読みたい本", want_books_path, class: "btn-border" %>
+  </div>
 <hr style="border-top: double;">
  <h3 style="font-weight: bold;">読んだ本の累計</h3>
 <hr style="border-bottom: double;">
