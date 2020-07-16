@@ -1,19 +1,27 @@
-<div class="col-12.col-md-6">
- <div class="container.card.card-book">
-  <div class="row">
-   <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-3 col-lg-4', method: :post do %>
-     <% if book.image? %>
-      <%= image_tag book.image, height: '100' %>
-     <% else %>
-      <%= image_tag 'book-image.png', height: '100' %>
-　　　<% end %>
-　　<% end %>
 
-   <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-9 col-lg-8', method: :post do %>
-     <%= book.title %>
-     <%= book.author %><br>
-     <%= book.description %>
+ <div class="col-12.col-md-6">
+  <div class="container.card.card-book">
+   <div class="row">
+    <hr>
+    <div style="text-align: center">
+    <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-3 col-lg-4', method: :post do %>
+     <% if book.image? %>
+      <%= image_tag book.image, height: '180' %>
+     <% else %>
+      <%= image_tag 'book-image.png', height: '180' %>
+　　　<% end %>
+　　 <% end %>
+    <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-9 col-lg-8', method: :post do %>
+     <button type="button" class="btn btn-info w-25">この本を選ぶ</button>
    <% end %>
+     </div>
+     <hr>
+     <% if book.description.present? %>
+      <p>著作：<%= book.title %><br>著者：<%= book.author %><br>内容：<%= book.description %></p>
+     <% else %>
+      <p>著作：<%= book.title %><br>著者：<%= book.author %><br>内容：情報がありません。</p>
+     <% end %>
+   </div>
   </div>
- </div>
-</div>
+ </div>
+<hr>

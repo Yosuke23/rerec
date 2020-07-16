@@ -1,5 +1,5 @@
 <%= provide(:title, @user.name) %>
- <h1 style="font-weight: bold; margin-top: -30px;">マイページ</h1>
+ <h1 style="font-size: 32px; font-weight: bold; margin-top: -50px; margin-bottom: 5px;">マイページ</h1>
   <div class="row">
    <aside class="col-md-4">
     <section>
@@ -7,10 +7,19 @@
      <h3 style="font-weight: bold; margin-top: 20px;"><%= @user.name %></h3>
     </section>
    </aside>
- <div style="margin-top: 30px;"> 
-  <%= link_to "読んでいる本", reading_books_path, class: "btn btn-lg btn-danger font-s" %>
-  <%= link_to "読んだ本", readed_books_path, class: "btn btn-lg btn-info font-s" %>
-  <%= link_to "読みたい本", want_books_path, class: "btn btn-lg btn-success font-s" %>
+ <div style="margin-top: 30px;">
+ <button type="button" class="btn btn-outline-success font-s">
+  <%= link_to "本をさがす", search_books_path %>
+ </button>
+ <button type="button" class="btn btn-outline-success font-s">
+  <%= link_to "読んでいる本", reading_books_path %>
+ </button>
+ <button type="button" class="btn btn-outline-success font-s">
+  <%= link_to "読んだ本", readed_books_path %>
+ </button>
+ <button type="button" class="btn btn-outline-success font-s">
+  <%= link_to "読みたい本", want_books_path %>
+ </button>
  </div>
  </div>
 <hr style="border-top: double;">
