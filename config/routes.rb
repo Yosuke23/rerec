@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post  '/impressions_title',  to:  'impressions#impressions_title'
 
   resources :users
+  resources :impressions, only: %i[create destroy edit update]
   resources :registers, only: %i[create destroy]
   resources :second_registers, only: %i[create destroy]
   resources :third_registers, only: %i[create destroy]
@@ -33,5 +34,4 @@ Rails.application.routes.draw do
      get :search
     end		
   end
-  resources :impressions, only: %i[create destroy]
 end

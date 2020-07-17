@@ -1,21 +1,19 @@
- <% provide(:title, "読書メモ") %>
+ <% provide(:title, "メモの編集") %>
  <h1 style="font-weight: bold; margin-top: -30px;">読書メモ</h1>
   <div style="text-align: center;">
-   <%= image_tag @book_image.url, width: '100' %>
   </div>
  <%= form_with model: @impression do |f| %>
-   <%= render 'shared/error_messages', object: f.object %>
-
+   <%#= render 'shared/error_messages', object: f.object %>
   <div class="field">
-   <%= f.hidden_field :image, value: @book_image %>
+   <%= f.hidden_field :image %>
    
    <%= f.label "本のタイトル" %>
-   <%= f.text_field :title, value: @book_title, placeholder: 'タイトル入力は必須です', class: 'form-control' %>
+   <%= f.text_field :title, placeholder: 'タイトル入力は必須です', class: 'form-control' %>
    
    <%= f.label "読書メモ" %>
    <%= f.text_area :content, placeholder: "1〜2000文字以内で入力してください" %>
   </div>
-   <%= f.submit "投稿", class: "btn btn-primary" %>
+   <%= f.submit "更新", class: "btn btn-primary" %>
    <%# <span class="picture"> %>
    <%#= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
   </span>

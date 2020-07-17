@@ -1,6 +1,6 @@
 class ImpressionsController < ApplicationController
- before_action :logged_in_user, only: [:create, :destroy] 
- before_action :correct_user,   only: :destroy
+ before_action :logged_in_user, only: [:create, :edit, :update, :destroy] 
+ before_action :correct_user,   only: [:destroy, :edit, :update]
  
  def create
    @impression = current_user.impressions.build(impression_params)
@@ -12,7 +12,21 @@ class ImpressionsController < ApplicationController
    flash[:danger] = "投稿内容に誤りがあります。タイトルとメモ欄は必ず入力してください"
   end
  end
- 
+
+ def edit
+  @impression = Impression.find(params[:id])
+ end
+
+ def update
+  @impression = Impression.find(params[:id])
+  if @impression.update(impression_params)
+    flash[:success] = "編集内容に更新しました"
+    redirect_to current_user
+  else
+   render 'edit_impression'
+  end
+ end
+
  def destroy
   @impression = current_user.impressions.find(params[:id])
   @impression.destroy
