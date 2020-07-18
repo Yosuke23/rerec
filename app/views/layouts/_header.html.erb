@@ -11,6 +11,21 @@
        </div>
   <nav>
     <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
+      <% if logged_in? %>
+        <li class="search-nav">
+          <%= form_with url: user_path(current_user), method: :get, local: true do %>
+         <div class="input-group">
+          <%= search_field_tag "i", params[:i], class: "form-control", placeholder: "投稿メモ検索" %>
+           <span class="input-group-btn">
+            <%= submit_tag "検索", class: "btn btn-default" %>
+           </span>
+         </div>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to "マイページ", current_user %>
+        </li>
+         <% end %>
         <li>
          <%= link_to "本を検索する", search_books_path %>
         </li>
@@ -19,14 +34,7 @@
 
       <% if logged_in? %>
         <li>
-          <%#= link_to "", root_path %>
-        </li>
-
-        <li>
-          <%= link_to "マイページ", current_user %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", logout_path, method: :delete %> 
+          <%= link_to "ログアウト", logout_path, method: :delete %>
         </li>
       <% else %>
        <li><%= link_to "はじめる", '/started_page' %>

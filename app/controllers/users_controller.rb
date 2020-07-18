@@ -19,8 +19,21 @@ class UsersController < ApplicationController
    @users = @user.impressions
    @impressions = Kaminari.paginate_array(@users).page(params[:page])
    @impression = current_user.impressions.build if logged_in?
+   # サイト内検索機能
+   unless params[:i] == "" # 空文字対策
+    if params[:i]
+     @feed_item = Impression.where(user_id: current_user.id).search_by_keyword(params[:i])
+      if @feed_item.any?
+       @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page])
+       flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
+      else
+       flash.now[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
+     end
+    end
+   end
   end
 
+  
   def create
    @user = User.new(user_params)
     if @user.save
@@ -49,5 +62,4 @@ private
      @user = User.find(params[:id])
      redirect_to current_user unless current_user?(@user)
     end
-
 end

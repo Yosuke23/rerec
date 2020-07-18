@@ -1,4 +1,6 @@
 <%= provide(:title, @user.name) %>
+<!--　ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
+<% unless @feed_items.present? %>
  <h1 style="font-size: 32px; font-weight: bold; margin-top: -50px; margin-bottom: 5px;">マイページ</h1>
   <div class="row">
    <aside class="col-md-4">
@@ -68,3 +70,13 @@
   <%= paginate @impressions %>
   <%= render @impressions %>
  <% end %>
+<% end %>
+<!--　ここまで　-->
+
+<!--　検索結果ありの場合のみ表示 -->
+　<% unless @feed_items.nil? %>
+  <hr style="margin-top: -70px;">
+   <h3 style="font-weight: bold;">投稿メモ検索結果</h3>
+  <hr>
+   <%= render @feed_items %>
+  <% end %>
