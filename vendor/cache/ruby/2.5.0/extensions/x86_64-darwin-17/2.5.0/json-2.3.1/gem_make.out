@@ -1,0 +1,13 @@
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+/Users/macbookpro/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200719-1982-bsqv9o.rb extconf.rb
+creating Makefile
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/macbookpro/apps/rerec/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" install
