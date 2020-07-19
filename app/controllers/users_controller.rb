@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :destroy]
   before_action :only_user, only: [:show]
+  before_action :admin_user, only: [:index, :destroy]
+
+  def index
+   @user = User.all
+   @users = Kaminari.paginate_array(@user).page(params[:page])
+  end
 
   def new
    @user = User.new
@@ -8,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
    date = Date.today
-   @user = User.find(current_user.id)
+   @user = User.find(params[:id])
    @books = @user.reading_books.order(created_at: :desc)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
@@ -32,7 +38,6 @@ class UsersController < ApplicationController
     end
    end
   end
-
   
   def create
    @user = User.new(user_params)
@@ -43,6 +48,12 @@ class UsersController < ApplicationController
     else
    	 render 'new'
     end
+  end
+  
+  def destroy
+   User.find(params[:id]).destroy
+   flash[:success] = "削除しました"
+   redirect_to users_url
   end
 
 private
@@ -57,9 +68,16 @@ private
      redirect_to(root_url) unless current_user?(@user)
     end
 
-    # ログインしていないユーザーのshowにアクセスするとログイン中の自分のshowページにリダイレクトされる
+    # adminを除く通常のユーザーがログインしていない他のユーザーのshowにアクセスすると自分のshowにリダイレクト
     def only_user
-     @user = User.find(params[:id])
-     redirect_to current_user unless current_user?(@user)
+     unless current_user.admin?
+      @user = User.find(params[:id])
+      redirect_to current_user unless current_user?(@user)
+     end
+    end
+
+    # adminユーザーでないユーザーがアクセスしたらrootにリダイレクト
+    def admin_user
+     redirect_to(root_url) unless current_user.admin?
     end
 end

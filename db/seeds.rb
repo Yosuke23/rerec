@@ -1,5 +1,5 @@
-User.create!(name: "Yosuke",
-  email: "yosuke612@gmail.com",
+User.create!(name: "Yosuke Narumi",
+  email: "naru@naru.com",
   password:           "yosuke",
   password_confirmation:  "yosuke",
   admin: true)

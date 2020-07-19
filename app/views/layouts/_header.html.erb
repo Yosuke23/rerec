@@ -33,11 +33,16 @@
 　　<!-- ログイン時のヘッダーメニュー -->
 
       <% if logged_in? %>
+        <li style="margin-top: -20px;"> 
+         <% if current_user.admin? %>
+　        <%= link_to "ユーザー管理画面", users_path %>
+         <% end %>
+        </li>
         <li>
           <%= link_to "ログアウト", logout_path, method: :delete %>
         </li>
       <% else %>
-       <li><%= link_to "はじめる", '/started_page' %>
+       <li><%= link_to "はじめる", '/started_page' %></li>
      <% end %>
     </ul>
   </nav>

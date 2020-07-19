@@ -568,3 +568,14 @@ input {
   border-color: #2f78c2;
   color: #FFF;
 }
+/*************************************/
+/* indexページのスタイリング */
+.users{
+  list-style:none;
+  margin:0;
+  li{
+   overflow:auto;
+   padding: 10px 0;
+   border-bottom: 1px solid $gray-lighter;
+  }
+}
