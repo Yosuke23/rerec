@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_061709) do
+ActiveRecord::Schema.define(version: 2020_07_19_045932) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "googlebooksapi_id", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_061709) do
     t.string "password_digest"
     t.string "remember_digest"
     t.string "avatar"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
