@@ -1,6 +1,15 @@
+<% provide :title, "読書メモ" %>
+  <div style="margin-top: -30px;">
+   <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
+   <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
+   <%= link_to "読んだ本", readed_books_path, class: "btn-border" %>
+   <%= link_to "読みたい本", want_books_path, class: "btn-border" %>
+   <%= link_to "読書メモを読む", impressions_page_path, class: "btn-border" %>
+  </div>
 <% if @impressions.any? %> 
- <h3 style="font-weight: bold; margin-top: -45px;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
- <hr style="border-bottom">
+<hr style="border-top: double; font-size: bold;">
+ <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
+<hr style="border-bottom: double;">
   <%= paginate @impressions %>
   <%= render @impressions %>
  <% else %> 
