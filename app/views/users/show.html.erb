@@ -14,6 +14,7 @@
    <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
    <%= link_to "読んだ本", readed_books_path, class: "btn-border" %>
    <%= link_to "読みたい本", want_books_path, class: "btn-border" %>
+   <%= link_to "読書メモを読む", impressions_page_path, class: "btn-border" %>
   </div>
  </div>
 <hr style="border-top: double;">
@@ -63,12 +64,14 @@
  </tr>
 </table>
 </h4>
+<% if current_user.admin? %>
 <hr style="border-top: double;">
  <% if @impressions.any? %>
  <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
  <hr style="border-bottom: double;">
   <%= paginate @impressions %>
   <%= render @impressions %>
+  <% end %>
  <% end %>
 <% end %>
 <!--　ここまで　-->

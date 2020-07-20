@@ -1,0 +1,10 @@
+<% if @impressions.any? %> 
+ <h3 style="font-weight: bold; margin-top: -45px;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
+ <hr style="border-bottom">
+  <%= paginate @impressions %>
+  <%= render @impressions %>
+ <% else %> 
+ <hr style="border-top">
+  <p style="text-align: center;">読書メモの記録はありません</p>
+ <hr style="border-bottom">
+ <% end %>

@@ -55,6 +55,13 @@ class UsersController < ApplicationController
    flash[:success] = "削除しました"
    redirect_to users_url
   end
+  
+  def impressions_page
+   @user = User.find_by(id: current_user.id)
+   @users = @user.impressions
+   @impressions = Kaminari.paginate_array(@users).page(params[:page])
+   @impression = current_user.impressions.build if logged_in?
+  end
 
 private
 
