@@ -1,6 +1,6 @@
 class SecondRegistersController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-
+  before_action :only_user, only: :create
   def create
    @book = Book.find(params[:book_id])
    current_user.readed_book_register(@book)

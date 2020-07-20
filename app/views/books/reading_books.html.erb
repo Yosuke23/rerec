@@ -13,10 +13,3 @@
  <% else %> 
   <p>現在読んでいる本はありません</p>
  <% end %>
-<hr style="border-top: double;">
- <% if @impressions.any? %>
- <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
- <hr style="border-bottom: double;">
-  <%= paginate @impressions %>
-  <%= render @impressions %>
- <% end %>
