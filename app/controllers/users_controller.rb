@@ -34,7 +34,7 @@ class UsersController < ApplicationController
      @feed_item = Impression.where(user_id: current_user.id).search_by_keyword(params[:i])
       if @feed_item.any?
        @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page])
-       flash[:success]= "#{@feed_item.count}件の投稿がヒットしました"
+       flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
       else
        flash[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
        redirect_to impressions_page_path
