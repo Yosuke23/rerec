@@ -1,12 +1,16 @@
- <div style="margin: 0px 40px 10px;">
-  <img src="<%= impression.image %>"><br>
+ <div style="margin: 0px 40px 10px; text-align:center;">
+  <img src="<%= impression.image %>" alt="本のイメージ" width="160"><br>
  </div>
-  著作：<%= impression.title %><br>
-  読書メモ：<%= impression.content %><br>
-  投稿/編集日：<%= impression.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(impression.updated_at)%>前）<br>
+ <div class="book-data">
+  <ul style="list-style-type: none;">
+   <li>著作：<%= impression.title %></li>
+   <li>読書メモ：<%= impression.content %></li>
+   <li>投稿/編集日：<%= impression.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(impression.updated_at)%>前）</li>
  <% if current_user?(impression.user) %>
-  <%= link_to "削除", impression, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-  <%= link_to "編集", edit_impression_path(impression) %>
+   <li><%= link_to "削除", impression, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+   <%= link_to "編集", edit_impression_path(impression) %>
+   </li>
  <% end %>
+  </ul> 
+ </div>
  <hr>
- 

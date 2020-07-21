@@ -12,6 +12,7 @@
   <nav>
     <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
       <% if logged_in? %>
+       <% if request.path == impressions_page_path %>
         <li class="search-nav">
           <%= form_with url: user_path(current_user), method: :get, local: true do %>
          <div class="input-group">
@@ -20,8 +21,9 @@
             <%= submit_tag "検索", class: "btn btn-default" %>
            </span>
          </div>
-         <% end %>
+        <% end %>
         </li>
+        <% end %>
         <li>
          <%= link_to "マイページ", current_user %>
         </li>

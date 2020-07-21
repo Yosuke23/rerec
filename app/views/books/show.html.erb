@@ -8,8 +8,16 @@
 <% end %>
  <%= @book.title %>
  <%= @book.author %><br>
+  <% if @book.buy_link.present? %>
+   <button type="button" class="btn btn-info w-25" style="margin-top:15px;">
+   <%= link_to @book.buy_link, target: :_blank do %>
+   購入する
+   </button>
+   <% end %>
+  <% end %><br>
  <%= render partial: 'shared/reading_from_search' %><br>
  <%= render partial: 'partial_for_register_books/register_area' %><br>
  <%= render partial: 'partial_for_register_books/second_register_area' %><br>
  <%= render partial: 'partial_for_register_books/third_register_area' %><br>
 </div>
+ 

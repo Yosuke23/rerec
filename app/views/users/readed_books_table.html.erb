@@ -1,4 +1,4 @@
-<% provide :title, "読んだ本" %>
+<%= provide(:title, '読んだ本一覧') %>
   <div style="margin-top: -30px; text-align: center;">
    <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
    <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
@@ -7,17 +7,6 @@
    <%= link_to "読書メモを読む", impressions_page_path, class: "btn-border" %>
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
-<hr style="border-top: double;">
- <h3 style="font-weight: bold; text-align: center;">読んだ本</h3>
-<hr style="border-bottom: double;">
- <% if @books.any? %> 
-  <%= render @books %> 
- <% else %> 
-  <p style="text-align: center;">現在読んだ本はありません</p>
- <% end %>
- <hr style="border-top: double;">
- <h3 style="font-weight: bold; text-align: center;">読んだ本の累計</h3>
-<hr style="border-bottom: double;">
 <%# 表 %>
 <table class="table-style" style="margin: 0 auto">
  <thead>

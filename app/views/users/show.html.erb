@@ -1,69 +1,90 @@
 <%= provide(:title, @user.name) %>
 <!--　ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
 <% unless @feed_items.present? %>
- <h1 style="font-size: 32px; font-weight: bold; margin-top: -50px; margin-bottom: 5px;">マイページ</h1>
-  <div class="row">
-   <aside class="col-md-4">
-    <section>
+
+    <section style="margin-top: -50px;">
      <%= gravatar_for @user %>
-     <h3 style="font-weight: bold; margin-top: 20px;"><%= @user.name %></h3>
-    </section>
-   </aside>
-  <div style="margin-top: 30px;">
+     <h3 style="font-weight: bold;"><%= @user.name %></h3>
+    </section><br>
+
+  <div style="text-align: center;">
    <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
    <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
    <%= link_to "読んだ本", readed_books_path, class: "btn-border" %>
    <%= link_to "読みたい本", want_books_path, class: "btn-border" %>
    <%= link_to "読書メモを読む", impressions_page_path, class: "btn-border" %>
+   <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
- </div>
 <hr style="border-top: double;">
- <h3 style="font-weight: bold;">今読んでいる本</h3>
+ <h3 style="font-weight: bold; text-align: center;">今読んでいる本</h3>
 <hr style="border-bottom: double;">
  <% if @books.any? %> 
   <%= render @books %> 
  <% else %> 
-  <p>現在読んでいる本はありません</p>
+  <p style="text-align: center;">現在読んでいる本はありません</p>
  <% end %>
-<hr style="border-top: double;">
- <h3 style="font-weight: bold;">読んだ本の累計</h3>
-<hr style="border-top: double;">  <p><% now = Time.current %><%= now.month %>月に読んだ本：<%= @now_month_count %>冊</p>
-  <p><% now = Time.current %><%= now.month %>月に読んだページ数：<%= @month_page_count %>ページ</p>
-  <p>読んだ本の合計（総計）：<%= @book_count %>冊</p>
-  <p>読んだページの合計：<%= @page_count %>ページ</p>
-<hr>
-<h4>
- <table border="1">
+
+ <%# 表 %>
+<table class="table-style" style="margin: 0 auto">
+ <thead>
   <tr>
-   <th>読んだ月</th>
-   <th>読んだ数</th>
+   <th><% now = Time.current %><%= now.month %>月に読んだ本</th>
+   <th><% now = Time.current %><%= now.month %>月に読んだページ数</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><%= @now_month_count %>冊</td>
+   <td><%= @month_page_count %>ページ</td>
+  </tr>
+ </tbody>
+</table>
+
+<table class="table-style" style="margin: 0 auto">
+ <thead>
+  <tr>
+   <th><% now = Time.current %><%= now.prev_month.mon %>月に読んだ本</th>
+   <th><% now = Time.current %><%= now.prev_month.mon %>月に読んだページ数</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><%= @last_month_count %>冊</td>
+   <td><%= @last_month_page_count %>ページ</td>
+  </tr>
+ </tbody>
+</table>
+
+ <table class="table-style" style="margin: 0 auto">
+  <tr>
+   <th>読んだ月(月集計)</th>
+   <th>読んだ数(月集計)</th>
   </tr>
  <tr>
   <td><% @month_book_count.keys.each do |month| %>
-   <%= month %>月<br>
+    <%= month %>月<br>
   <% end %></td>
   <td><% @month_book_count.values.each do |count| %>
    <%= count %>冊<br>
   <% end %></td>
  </tr>
-</table><br>
-</h4>
-<h4>
-<table border="1">
+</table>
+
+<table class="table-style" style="margin: 0 auto">
  <tr>
-  <th>読んだ年</th>
-  <th>読んだ数</th>
+  <th>読んだ年(年集計)</th>
+  <th>読んだ数(年集計)</th>
  </tr>
  <tr>
   <td><% @year_book_count.keys.each do |year| %>
-   <%= year %>年<br>
+    <%= year %>年<br>
   <% end %></td>
   <td><% @year_book_count.values.each do |book| %>
-   <%= book %>冊<br>
+    <%= book %>冊<br>
   <% end %></td>
  </tr>
 </table>
-</h4>
+
 <% if current_user.admin? %>
 <hr style="border-top: double;">
  <% if @impressions.any? %>
@@ -77,9 +98,53 @@
 <!--　ここまで　-->
 
 <!--　検索結果ありの場合のみ表示 -->
-　<% unless @feed_items.nil? %>
+<% unless @feed_items.nil? %>
+ <header class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+          <%= link_to "REREC", root_path, id: "logo" %>
+       </div>
+  <nav>
+    <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
+      <% if logged_in? %>
+        <li class="search-nav">
+          <%= form_with url: user_path(current_user), method: :get, local: true do %>
+         <div class="input-group">
+          <%= search_field_tag "i", params[:i], class: "form-control", placeholder: "読書メモ検索" %>
+           <span class="input-group-btn">
+            <%= submit_tag "検索", class: "btn btn-default" %>
+           </span>
+         </div>
+        <% end %>
+        </li>
+        <li>
+         <%= link_to "マイページ", current_user %>
+        </li>
+         <% end %>
+        <li>
+         <%= link_to "本をさがす", search_books_path %>
+        </li>
+        <li style="margin-top: -20px;"> 
+         <% if current_user.admin? %>
+　        <%= link_to "ユーザー管理画面", users_path %>
+         <% end %>
+        </li>
+        <li>
+         <%= link_to "ログアウト", logout_path, method: :delete %>
+        </li>
+      </ul>
+    </nav>
+   </div>
+  </header>
   <hr style="margin-top: -70px;">
-   <h3 style="font-weight: bold;">投稿メモ検索結果</h3>
+   <h3 style="font-weight: bold; text-align: center;">投稿メモ検索結果</h3>
   <hr>
    <%= render @feed_items %>
   <% end %>
+<!--　ここまで　-->  

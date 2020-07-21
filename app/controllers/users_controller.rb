@@ -14,12 +14,15 @@ class UsersController < ApplicationController
 
   def show
    date = Date.today
+   now = Time.current
    @user = User.find(params[:id])
    @books = @user.reading_books.order(created_at: :desc)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
    @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count
+   @last_month_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).count
    @month_page_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).pluck(:page_count).sum
+   @last_month_page_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).pluck(:page_count).sum
    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
    @users = @user.impressions
@@ -31,9 +34,10 @@ class UsersController < ApplicationController
      @feed_item = Impression.where(user_id: current_user.id).search_by_keyword(params[:i])
       if @feed_item.any?
        @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page])
-       flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
+       flash[:success]= "#{@feed_item.count}件の投稿がヒットしました"
       else
-       flash.now[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
+       flash[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
+       redirect_to impressions_page_path
      end
     end
    end
@@ -62,7 +66,23 @@ class UsersController < ApplicationController
    @impressions = Kaminari.paginate_array(@users).page(params[:page])
    @impression = current_user.impressions.build if logged_in?
   end
-
+  
+  def readed_books_table
+    date = Date.today
+    now = Time.current
+    @user = User.find(current_user.id) 
+    @books = @user.readed_books.order(created_at: :desc)
+    @books_created_at = @user.readed_books.pluck(:created_at)
+    @page_count = @user.readed_books.pluck(:page_count).sum
+    @book_count = @user.readed_books.count
+    @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count
+    @last_month_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).count
+    @month_page_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).pluck(:page_count).sum
+    @last_month_page_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).pluck(:page_count).sum
+    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
+    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
+  end
+  
 private
 
 	  def user_params

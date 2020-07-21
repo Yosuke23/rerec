@@ -1,18 +1,22 @@
-<div class="container.card.card-book">
+<div class="container.card.card-book" style="text-align:center;">
  <div class="row">
   <div class="col-2.col-md-3">
   <div style="margin: 0px 40px 8px;">
    <%= link_to book_path(book) do %>
-    <%= image_tag book.image.url, width: '100' if book.image? %>
+    <%= image_tag book.image.url, width: '150' if book.image? %>
    <% end %>
   </div>
-   <%= link_to book_path(book), class: 'col-9 col-md-8' do %>
+   <%= link_to book_path(book) do %>
     <%= "読書メモ/本の登録区分変更" %>
    <% end %><br>
-    著作：<%= book.title %><br>
-    著者：<%= book.author %><br>
-    登録日：<%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(book.created_at)%>前）<br><br>
-    ページ数：<%= book.page_count %>ページ<br>
+    <div class="book-data">
+    <ul style="list-style-type: none;">
+     <li>著作：<%= book.title %></li>
+     <li>著者：<%= book.author %></li>
+     <li>登録日：<%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></li>
+     <li>ページ数：<%= book.page_count %>ページ</li>
+    </ul>
+   </div>
   </div>
  </div>
 </div>

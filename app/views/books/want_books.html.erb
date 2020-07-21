@@ -1,16 +1,17 @@
 <% provide :title, "読みたい本" %>
-  <div style="margin-top: -30px;">
+  <div style="margin-top: -30px; text-align: center;">
    <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
    <%= link_to "読んでいる本", reading_books_path, class: "btn-border" %>
    <%= link_to "読んだ本", readed_books_path, class: "btn-border" %>
    <%= link_to "読みたい本", want_books_path, class: "btn-border" %>
    <%= link_to "読書メモを読む", impressions_page_path, class: "btn-border" %>
+   <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
 <hr style="border-top: double; font-size: bold;">
- <h3 style="font-weight: bold;">読みたい本</h3>
+ <h3 style="font-weight: bold; text-align: center;">読みたい本</h3>
 <hr style="border-bottom: double;">
  <% if @books.any? %> 
   <%= render @books %> 
  <% else %>
-  <p>現在読みたい本はありません</p>
+  <p style="text-align: center;">現在読みたい本はありません</p>
  <% end %>
