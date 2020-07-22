@@ -16,7 +16,7 @@ class SecondRegistersController < ApplicationController
   def destroy
    @book = current_user.second_registers.find(params[:id]).book
    current_user.readed_book_un_register(@book)
-   #redirect_to @book
+   flash[:info] = "『#{@book[:title]}』を読んだ本から除外しました。再度読んだ本に登録した際は、初回の既読日に登録されます"
    redirect_to readed_books_path
   end
 end

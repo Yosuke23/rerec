@@ -79,7 +79,7 @@ class User < ApplicationRecord
     def readed_book_un_register(book)
      readed_books.destroy(book)
     end
-    
+
     ## 渡された本の情報が登録済みであればtrueを返す
     def readed_book_register?(book)
      readed_books.include?(book)

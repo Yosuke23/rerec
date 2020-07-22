@@ -6,7 +6,7 @@ class BooksController < ApplicationController
    @books = Book.all
   end
   
-  def create         #GoogleBook.new => google_book.rb 
+  def create         #GoogleBook.new => google_book.rb
     google_book = GoogleBook.new_from_id(create_book_params[:googlebooksapi_id])
    if (@book = google_book.find_book_or_save)
     redirect_to @book
