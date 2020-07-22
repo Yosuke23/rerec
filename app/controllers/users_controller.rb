@@ -69,9 +69,9 @@ class UsersController < ApplicationController
   
   def readed_books_table
     @user = User.find(current_user.id) 
-    @books_table_data = @user.readed_books.order(created_at: :desc).pluck(:title, :author, :created_at)
+    @books_table_data = @user.readed_books.order(updated_at: :desc).pluck(:title, :author, :updated_at)
   end
-  
+
 private
 
 	  def user_params

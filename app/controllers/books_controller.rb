@@ -33,7 +33,7 @@ class BooksController < ApplicationController
    date = Date.today
    now = Time.current
    @user = User.find(current_user.id)
-   @books = @user.readed_books.order(created_at: :desc)
+   @books = @user.readed_books.order(updated_at: :desc)
    @books_created_at = @user.readed_books.pluck(:created_at)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
