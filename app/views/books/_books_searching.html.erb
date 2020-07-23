@@ -1,5 +1,7 @@
 <hr style="margin-top: 50px;">
- <h3 style="text-align: center; margin-bottom: -80px; ">検索結果</h3>
+<% if @books.any? %>
+ <h3 style="font-weight: bold; text-align: center; margin-bottom: -80px; ">検索結果</h3>
+<% end %>
 <div class="container">
  <div class="row">
    <%= render partial: 'books/book_searching', collection: @books, as: :book %>

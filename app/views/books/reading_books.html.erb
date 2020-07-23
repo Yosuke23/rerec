@@ -7,9 +7,7 @@
    <%= link_to "読書メモ確認", impressions_page_path, class: "btn-border" %>
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
-<hr style="border-top: double; font-size: bold;">
- <h3 style="font-weight: bold; text-align: center;">読んでいる本</h3>
-<hr style="border-bottom: double;">
+ <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読んでいる本 -</h3>
  <% if @books.any? %> 
   <%= render @books %> 
  <% else %> 

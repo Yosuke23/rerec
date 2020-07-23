@@ -72,7 +72,7 @@ class User < ApplicationRecord
     
     ## 読んだ本に登録
     def readed_book_register(book)
-     @readed_book = readed_books << book
+     readed_books << book
     end
     
     ## 読んだ本から削除

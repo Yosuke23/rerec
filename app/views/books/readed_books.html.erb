@@ -7,17 +7,13 @@
    <%= link_to "読書メモ確認", impressions_page_path, class: "btn-border" %>
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
-<hr style="border-top: double;">
- <h3 style="font-weight: bold; text-align: center;">読んだ本</h3>
-<hr style="border-bottom: double;">
+ <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読んだ本 -</h3>
  <% if @books.any? %> 
   <%= render @books %> 
  <% else %> 
   <p style="text-align: center;">現在読んだ本はありません</p>
  <% end %>
- <hr style="border-top: double;">
- <h3 style="font-weight: bold; text-align: center;">読んだ本の累計</h3>
-<hr style="border-bottom: double;">
+ <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読んだ本の集計 -</h3>
 <%# 表 %>
 <table class="table-style" style="margin: 0 auto">
  <thead>
