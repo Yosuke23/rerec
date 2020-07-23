@@ -23,7 +23,7 @@ class BooksController < ApplicationController
 
   def reading_books
     @user = User.find(current_user.id)
-    @books = @user.reading_books.order(created_at: :desc)
+    @books = @user.reading_books.order(updated_at: :desc)
     @users = @user.impressions
     @impressions = Kaminari.paginate_array(@users).page(params[:page])
     @impression = current_user.impressions.build if logged_in?
