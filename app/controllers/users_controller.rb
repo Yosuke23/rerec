@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :destroy, :impressions_page, :readed_books_table]
   before_action :only_user, only: [:show]
   before_action :admin_user, only: [:index, :destroy]
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
    date = Date.today
    now = Time.current
    @user = User.find(params[:id])
-   @books = @user.reading_books.order(created_at: :desc)
+   @books = @user.reading_books.order(updated_at: :desc)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
    @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count

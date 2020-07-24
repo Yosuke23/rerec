@@ -8,7 +8,7 @@
   #   t.index ["user_id", "book_id"], name: "index_registers_on_user_id_and_book_id", unique: true
   #   t.index ["user_id"], name: "index_registers_on_user_id"
 class Register < ApplicationRecord
-	 belongs_to :user
+   belongs_to :user
    belongs_to :book
-	 validates :user_id, uniqueness: { scope: :book_id }
+   validates :user_id, uniqueness: { scope: :book_id }
 end

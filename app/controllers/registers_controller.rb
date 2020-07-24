@@ -4,7 +4,7 @@ class RegistersController < ApplicationController
   def create
    @book = Book.find(params[:book_id])
    @reading_book = current_user.reading_book_register(@book)
-   @reading_book[0].update(updated_at: Time.current)
+   @book.update(updated_at: Time.current)
    current_user.want_book_un_register(@book) if current_user.want_book_register?(@book)
    flash[:info] = "『#{@book[:title]}』を読んでいる本に登録しました"
    redirect_to reading_books_path
