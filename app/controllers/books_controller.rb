@@ -50,9 +50,9 @@ class BooksController < ApplicationController
 
   def want_books
    @user = User.find(current_user.id)
-   @books = @user.want_books.order(created_at: :desc)
+   @books = @user.want_books.order(updated_at: :desc)
   end
-
+  
   def search
    @search_form = SearchBooksForm.new(search_books_params)
    books = GoogleBook.search(@search_form.keyword)

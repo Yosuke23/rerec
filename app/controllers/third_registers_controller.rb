@@ -3,8 +3,13 @@ class ThirdRegistersController < ApplicationController
 
   def create
    @book = Book.find(params[:book_id])
-   current_user.want_book_register(@book)
+   @want_book = current_user.want_book_register(@book)
+   @book.update(updated_at: Time.current)
    flash[:info] = "『#{@book[:title]}』を読みたい本に登録しました"
+   if current_user.reading_book_register?(@book)
+    current_user.reading_book_un_register(@book)
+    flash[:info] = "『#{@book[:title]}』を読んでいる本から読みたい本に移動しました"
+   end
    redirect_to want_books_path
   end
 

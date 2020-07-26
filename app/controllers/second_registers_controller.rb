@@ -11,6 +11,7 @@ class SecondRegistersController < ApplicationController
     flash[:info] = "『#{@book[:title]}』を読んだ本に登録しました。ページ数（#{@book[:page_count]}P）が読んだページの合計に加算されました"
    end
     current_user.reading_book_un_register(@book) if current_user.reading_book_register?(@book)
+    current_user.want_book_un_register(@book) if current_user.want_book_register?(@book)
     redirect_to readed_books_path
   end
 

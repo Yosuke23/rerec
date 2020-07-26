@@ -549,13 +549,15 @@ input {
 .container {
   font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
 }
+//読書メモ確認、読んだ本一覧ページリンクボタン用のスタイル
 .btn-border {
   display: inline-block;
   max-width: 180px;
   text-align: left;
-  border: 2px solid #1a5a9b;
+  border: 2px solid #343435;
+  background-color: #343435;
   font-size: 16px;
-  color: #1a5a9b;
+  color: #FFF;
   text-decoration: none;
   font-weight: bold;
   padding: 8px 16px;
@@ -564,8 +566,28 @@ input {
 }
 
 .btn-border:hover {
-  background-color: #1a5a9b;
-  border-color: #2f78c2;
+  background-color: #FFF;
+  border-color: rgb(187, 189, 192);
+  color: rgb(85, 87, 88);
+}
+//読んでいる本、読んだ本、読みたい本ページリンクボタン用のスタイル
+.btn-border-2 {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid rgb(85, 87, 88);
+  font-size: 16px;
+  color: rgb(85, 87, 88);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.btn-border-2:hover {
+  background-color: rgb(85, 87, 88);
+  border-color: rgb(119, 122, 124);
   color: #FFF;
 }
 /*************************************/
@@ -603,8 +625,6 @@ table.table-style td {
 tr {
   background: #d9d9d9;
 }
-
-
 /*************************************/
 /* _book.html.erb（ブックと読書メモのテキスト部分を中央寄せ＆左寄させる）のスタイリング */
 .book-data {
@@ -619,4 +639,14 @@ tr {
 }
 .book-data ul li {
 	text-align: left;
+}
+/*************************************/
+//_book_seaching.html.erb _book.html.erbブックのレイアウトのdescriptionの改行設定
+.wrap {
+  width:350px; 
+  height:100px;
+  word-wrap: break-word;
+}
+.book {
+  color: rgb(31, 118, 177);
 }

@@ -4,28 +4,28 @@
    <div class="row">
     <hr>
      <div class="book-data">
-      <ul style="list-style-type: none;">
+      <ul class="wrap" style="list-style-type: none;">
        <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-3 col-lg-4', method: :post do %>
         <% if book.image? %>
          <%= image_tag book.image, height: '180' %>
         <% else %>
          <%= image_tag 'book-image.png', height: '180' %></div>
-　　　   <% end %>
-　　    <% end %>
+        <% end %>
+       <% end %>
        <%= link_to books_path(googlebooksapi_id: book.googlebooksapi_id), class: 'col-9 col-lg-8', method: :post do %>
         <button type="button" class="btn btn-info w-25" style="margin-top:5px;">この本を選ぶ</button>
        <% end %>
       <hr>
+      <li style="margin-left: 5px; margin-right: 5px;">著作：<span class="book"><%= book.title %></span></li>
+      <li style="margin-left: 5px; margin-right: 5px;">著者：<span class="book"><%= book.author %></span></li>
      <% if book.description.present? %>
-      <li style="margin-left: 5px; margin-right: 5px;">著作：<%= book.title %></li>
-      <li style="margin-left: 5px; margin-right: 5px;">著者：<%= book.author %></li>
-      <li style="margin-left: 5px; margin-right: 5px;">内容：<%= book.description %></li>
+      <li style="margin-left: 5px; margin-right: 5px;">内容：<span class="book"><%= strip_tags book.description %></span></li>
      <% else %>
-      <li style="margin-left: 5px; margin-right: 5px;">著作：<%= book.title %></li>
-      <li style="margin-left: 5px; margin-right: 5px;">著者：<%= book.author %></li>
-      <li style="margin-left: 5px; margin-right: 5px;">内容：内容：情報がありません</li>
-     </div>
+      <li style="margin-left: 5px; margin-right: 5px;">内容：内容：<span class="book">情報がありません</span></li>
      <% end %>
+      <li>ページ数：<span class="book"><%= book.page_count %></span>ページ</li>
+     </div>
+    </ul>
    </div>
   </div>
  </div>
