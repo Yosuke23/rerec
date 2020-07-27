@@ -3,26 +3,26 @@
 <table class="table-style" style="margin: 0 auto">
  <thead>
   <tr>
-   <th>NO</th>
-   <th>本のタイトル</th>
-   <th>著者名</th>
-   <th>読了した日</th>
+   <th style="width: 15px; text-align: center;">NO</th>
+   <th style="text-align: center;">本のタイトル</th>
+   <th style="text-align: center;">著者名</th>
+   <th style="text-align: center;">読了した日</th>
   </tr>
  </thead>
-   <% @books_table_data.each_with_index do |count, i| %>
+   <% @books_table_data.each_with_index.reverse_each do |count, i| %>
  <tbody>
   <tr>
-   <td class="table-style_b">
-     <%= "#{i += 1}" %><br><!-- 1からスタート -->
+   <td style="text-align: center; width: 15px;">
+     <%= i += 1 %><!-- 1からスタート -->
    </td>
    <td>
-     <%= count[0] %><br>
+     <%= count[0] %>
    </td>
    <td>
-    <%= count[1] %><br>
+    <%= count[1] %>
    </td>
-   <td>
-    <%= count[2].strftime("%Y年%-m月%-d日") %><br> 
+   <td style="width: 10px; text-align: center;">
+    <%= count[2].strftime("%Y年%-m月%-d日") %>
    </td>
   </tr>
  </tbody>

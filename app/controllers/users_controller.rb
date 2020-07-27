@@ -69,7 +69,8 @@ class UsersController < ApplicationController
   
   def readed_books_table
     @user = User.find(current_user.id) 
-    @books_table_data = @user.readed_books.order(created_at: :desc).pluck(:title, :author, :created_at)
+    @books_table = @user.readed_books.order(created_at: :asc).pluck(:title, :author, :created_at)
+    @books_table_data = Kaminari.paginate_array(@books_table).page(params[:page])
   end
 
 private

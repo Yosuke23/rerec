@@ -603,10 +603,12 @@ input {
 }
 /*************************************/
 /* tableのスタイリング */
-table, th, td {
-  border-collapse: collapse;
-  border: 1px solid #ccc;
+table{
+	border-collapse: separate;//border-radius関連のため追記
+	border-radius: 6px;//border-radius関連のため追記
+	border: 1px solid #ffffff;//border-radius関連のため追記
   line-height: 1.5;
+  overflow: hidden;
 }
 
 table.table-style th {
@@ -617,13 +619,36 @@ table.table-style th {
   background: #3f3f3f;
   color: #ffffff;
 }
+
 table.table-style td {
-  width: 350px;
+  width: 300px;
   padding: 10px;
   vertical-align: top;
 }
+
 tr {
   background: #d9d9d9;
+}
+//border-radius関連のため下記追記
+table th:not(:last-child){
+	border-bottom:1px solid #3f3f3f;
+	border-right:1px solid #d9d9d9;
+}
+
+table td:not(:last-child){
+  border-right:1px solid #ffffff;
+}
+
+table td {
+  border-bottom:1px solid #ffffff;
+}
+
+table thead th:first-child {
+	border-radius:6px 0 0 0; 
+}
+
+table thead th:nth-child(4) {
+	border-radius:0 6px 0 0; 
 }
 /*************************************/
 /* _book.html.erb（ブックと読書メモのテキスト部分を中央寄せ＆左寄させる）のスタイリング */
