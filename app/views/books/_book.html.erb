@@ -11,23 +11,23 @@
    <% end %><br>
     <div class="book-data">
     <ul class="wrap" style="list-style-type: none;">
-     <li style="margin-left: 5px; margin-right: 5px;">著作：<span class="book"><%= book.title %></span></li>
-     <li style="margin-left: 5px; margin-right: 5px;">著者：<span class="book"><%= book.author %></span></li>
+     <li style="margin-left: 80px; margin-right: 5px;">著作：<span class="book"><%= book.title %></span></li>
+     <li style="margin-left: 80px; margin-right: 5px;">著者：<span class="book"><%= book.author %></span></li>
      <% if request.path == reading_books_path %>
-      <li style="margin-left: 5px; margin-right: 5px;">読み始めた日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
+      <li style="margin-left: 80px; margin-right: 5px;">読み始めた日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
      <% elsif request.path == user_path(current_user) %>
-      <li style="margin-left: 5px; margin-right: 5px;">読み始めた日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日") %></span></li>
+      <li style="margin-left: 80px; margin-right: 5px;">読み始めた日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日") %></span></li>
      <% elsif request.path == readed_books_path %>
-      <li style="margin-left: 5px; margin-right: 5px;">読了日：<span class="book"><%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
+      <li style="margin-left: 80px; margin-right: 5px;">読了日：<span class="book"><%= book.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
      <% elsif request.path == want_books_path  %>
-      <li style="margin-left: 5px; margin-right: 5px;">積本日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
+      <li style="margin-left: 80px; margin-right: 5px;">積本日：<span class="book"><%= book.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %></span></li>
        <% if book.description.present? %>
-        <li style="margin-left: 5px; margin-right: 5px;">内容：<span class="book"><%= strip_tags book.description %></span></li>
+        <li style="margin-left: 80px; margin-right: 5px;">内容：<span class="book"><%= strip_tags book.description %></span></li>
        <% else %>
-        <li style="margin-left: 5px; margin-right: 5px;">内容：<span class="book">情報がありません</span></li>
+        <li style="margin-left: 80px; margin-right: 5px;">内容：<span class="book">情報がありません</span></li>
        <% end %>
       <% end %>
-     <li style="margin-left: 5px; margin-right: 5px;">ページ数：<span class="book"><%= book.page_count %></span>ページ</li>
+     <li style="margin-left: 80px; margin-right: 5px;">ページ数：<span class="book"><%= book.page_count %></span>ページ</li>
     </ul>
    </div>
   </div>

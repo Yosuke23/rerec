@@ -9,11 +9,11 @@
    <th style="text-align: center;">読了した日</th>
   </tr>
  </thead>
-   <% @books_table_data.each_with_index.reverse_each do |count, i| %>
+   <% @books_table_data.each_with_index do |count, i| %>
  <tbody>
   <tr>
    <td style="text-align: center; width: 15px;">
-     <%= i += 1 %><!-- 1からスタート -->
+     <%= @base_level + i += 1 %><!-- 1からスタート -->
    </td>
    <td>
      <%= count[0] %>
@@ -28,3 +28,4 @@
  </tbody>
  <% end %>
 </table>
+<%= paginate @books_table_data %>

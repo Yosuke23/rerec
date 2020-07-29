@@ -9,7 +9,8 @@
   </div>
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読んでいる本 -</h3>
  <% if @books.any? %> 
-  <%= render @books %> 
+  <%= render @book_paginate %>
+  <%= paginate @book_paginate %>
  <% else %> 
   <p style="text-align: center;">現在読んでいる本はありません</p>
  <% end %>

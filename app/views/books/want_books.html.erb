@@ -10,6 +10,7 @@
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読みたい本 -</h3>
  <% if @books.any? %> 
   <%= render @books %>
+  <%= paginate @book_paginate %>
  <% else %>
   <p style="text-align: center;">現在読みたい本はありません</p>
  <% end %>

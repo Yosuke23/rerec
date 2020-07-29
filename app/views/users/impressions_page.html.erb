@@ -9,8 +9,8 @@
   </div>
 <% if @impressions.any? %> 
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読書メモ （投稿数：<%= @impressions.count %>） -</h3>
-  <%= paginate @impressions %>
   <%= render @impressions %>
+  <%= paginate @impressions %>
  <% else %> 
  <hr style="border-top">
   <p style="text-align: center;">読書メモの記録はありません</p>

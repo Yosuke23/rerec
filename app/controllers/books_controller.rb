@@ -24,8 +24,9 @@ class BooksController < ApplicationController
   def reading_books
     @user = User.find(current_user.id)
     @books = @user.reading_books.order(updated_at: :desc)
+    @book_paginate = Kaminari.paginate_array(@books).page(params[:page]).per(5)
     @users = @user.impressions
-    @impressions = Kaminari.paginate_array(@users).page(params[:page])
+    @impressions = Kaminari.paginate_array(@users).page(params[:page]).per(5)
     @impression = current_user.impressions.build if logged_in?
   end
 
@@ -34,6 +35,7 @@ class BooksController < ApplicationController
    now = Time.current
    @user = User.find(current_user.id)
    @books = @user.readed_books.order(created_at: :desc)
+   @book_paginate = Kaminari.paginate_array(@books).page(params[:page]).per(5)
    @books_created_at = @user.readed_books.pluck(:created_at)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
@@ -51,12 +53,13 @@ class BooksController < ApplicationController
   def want_books
    @user = User.find(current_user.id)
    @books = @user.want_books.order(updated_at: :desc)
+   @book_paginate = Kaminari.paginate_array(@books).page(params[:page]).per(5)
   end
   
   def search
    @search_form = SearchBooksForm.new(search_books_params)
    books = GoogleBook.search(@search_form.keyword)
-   @books = Kaminari.paginate_array(books).page(params[:page])
+   @books = Kaminari.paginate_array(books).page(params[:page]).per(5)
   end
 
 private

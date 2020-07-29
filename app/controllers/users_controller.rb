@@ -17,6 +17,7 @@ class UsersController < ApplicationController
    now = Time.current
    @user = User.find(params[:id])
    @books = @user.reading_books.order(updated_at: :desc)
+   @book_paginate = Kaminari.paginate_array(@books).page(params[:page]).per(1)
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
    @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     if params[:i]
      @feed_item = Impression.where(user_id: current_user.id).search_by_keyword(params[:i])
       if @feed_item.any?
-       @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page])
+       @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page]).per(5)
        flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
       else
        flash[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
@@ -63,16 +64,18 @@ class UsersController < ApplicationController
   def impressions_page
    @user = User.find_by(id: current_user.id)
    @users = @user.impressions
-   @impressions = Kaminari.paginate_array(@users).page(params[:page])
+   @impressions = Kaminari.paginate_array(@users).page(params[:page]).per(5)
    @impression = current_user.impressions.build if logged_in?
   end
   
   def readed_books_table
     @user = User.find(current_user.id) 
-    @books_table = @user.readed_books.order(created_at: :asc).pluck(:title, :author, :created_at)
-    @books_table_data = Kaminari.paginate_array(@books_table).page(params[:page])
+    @books_table = @user.readed_books.order(created_at: :desc).pluck(:title, :author, :created_at)
+    @books_table_data = Kaminari.paginate_array(@books_table).page(params[:page]).per(10)
+    @table_num = Kaminari.paginate_array(@books_table).page(params[:page]).current_page
+    @base_level = (@table_num - 1)*10
   end
-
+   
 private
 
 	  def user_params

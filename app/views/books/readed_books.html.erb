@@ -8,8 +8,9 @@
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読んだ本 -</h3>
- <% if @books.any? %> 
-  <%= render @books %>
+ <% if @books.any? %>
+  <%= render @book_paginate %>
+  <%= paginate @book_paginate %>
  <% else %> 
   <p style="text-align: center;">現在読んだ本はありません</p>
  <% end %>
