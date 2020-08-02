@@ -12,4 +12,11 @@ private
 	 redirect_to started_page_url
      end
 	end
+
+	def un_logged_in_user
+	 if logged_in?
+		flash[:danger] = "既にログイン済みです"
+		redirect_to current_user
+	 end
+	end
 end

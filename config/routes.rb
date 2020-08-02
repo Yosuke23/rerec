@@ -36,4 +36,5 @@ Rails.application.routes.draw do
      get :search
     end		
   end
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 end

@@ -1,5 +1,5 @@
 <%= provide(:title, @user.name) %>
-<!--　ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
+<!-- ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
 <% unless @feed_items.present? %>
 
     <section style="margin-top: -50px;">
@@ -84,6 +84,22 @@
  </tr>
 </table>
 
+<table class="table-style" style="margin: 0 auto">
+ <thead>
+  <tr>
+   <th>読んだ本の総計</th>
+   <th>読んだページ数</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><%= @book_count %>冊</td>
+   <td><%= @page_count %>ページ</td>
+  </tr>
+ </tbody>
+</table>
+
+<!-- 管理者のみ -->
 <% if current_user.admin? %>
 <hr style="border-top: double;">
  <% if @impressions.any? %>
@@ -95,9 +111,9 @@
  <% end %>
 <% end %>
 
-<!--　ここまで　-->
+<!-- ここまで -->
 
-<!--　検索結果ありの場合のみ表示 -->
+<!-- 検索結果ありの場合のみ表示 -->
 <% unless @feed_items.nil? %>
 <% if logged_in? %>
 　<header class="navbar navbar-fixed-top navbar-default">
@@ -127,4 +143,4 @@
   <hr>
    <%= render @feed_items %>
 <% end %>
-<!--　ここまで　-->
+<!-- ここまで -->

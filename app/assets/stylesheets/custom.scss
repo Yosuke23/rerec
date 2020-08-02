@@ -181,7 +181,7 @@ input {
 }
 
 .navbar-fixed-top {
-  background-color:#000000;
+  background-color:#333333;
   padding: 3.5px 0;
   }
 
@@ -689,4 +689,19 @@ table thead th:nth-child(4) {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
   border-radius: 15px;    /*角を丸くする*/
+}
+/*************************************/
+/*本検索ページの（search.erb）のデザイン*/
+.search-nav-1 {
+  text-align: center;
+  width: 400px;
+}
+/*************************************/
+/*読書メモ入力フォーム(impressions_title.html.erb/edit.html.erb)のデザイン*/
+.impression-nav {
+  text-align: center;
+  width: 380px;
+}
+.text-area {
+  height:150px;
 }

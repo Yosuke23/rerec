@@ -1,6 +1,17 @@
 <% provide(:title, "本を検索する") %>
-<%= form_with model: @search_form, url: search_books_path, scope: :q, local: true, method: :get do |f| %>
-<%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワードを入力してください' %>
-<%= f.submit '検索する', class: 'btn btn-raised btn-primary' %>
+<% unless @books.any? %>
+<div style="margin-top: -20px;">
+<h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 本を検索する -</h3>
+</div>
 <% end %>
-<%= render 'books_searching', books: @books %>
+<div class="container search-nav-1">
+  <%= form_with model: @search_form, url: search_books_path, scope: :q, local: true, method: :get do |f| %>
+   <div class="input-group">
+    <%= f.search_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: 'キーワードを入力してください' %>
+   <span class="input-group-btn">
+    <%= submit_tag "検索", class: "btn btn-default text-white" %>
+   </span>
+   <% end %>
+   </div>
+</div>
+ <%= render 'books_searching', books: @books %>

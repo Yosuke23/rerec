@@ -25,6 +25,7 @@ class User < ApplicationRecord
      has_many :readed_books, through: :second_registers, source: :book
      has_many :want_books, through: :third_registers, source: :book
 
+     has_many :authorizations, dependent: :destroy
 ## ログイン機能関連メソッド
     # 渡された文字列のハッシュ値を返す
     def self.digest(string)
@@ -100,6 +101,13 @@ class User < ApplicationRecord
      want_books.include?(book)
     end
     
+    # OAuth関連メソッド authからユーザーをcreate
+    def User.create_from_auth!(auth)
+     token = User.new_token
+     digest = User.digest(token)
+     User.create!(:name => auth['info']['name'], :email => auth['info']['email'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest, :activated => true)
+    end
+
 private
 	 # メールアドレスを全て小文字に変換する
 	  def downcase_email
