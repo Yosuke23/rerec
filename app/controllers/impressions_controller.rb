@@ -5,7 +5,7 @@ class ImpressionsController < ApplicationController
  def create
    @impression = current_user.impressions.build(impression_params)
   if @impression.save
-   redirect_to current_user
+   redirect_to impressions_page_url
    flash[:success] = "投稿が完了しました"
   else
    redirect_to request.referrer || current_user
