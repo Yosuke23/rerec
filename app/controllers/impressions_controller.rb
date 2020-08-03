@@ -21,7 +21,7 @@ class ImpressionsController < ApplicationController
   @impression = Impression.find(params[:id])
   if @impression.update(impression_params)
     flash[:success] = "編集内容に更新しました"
-    redirect_to current_user
+    redirect_to impressions_page_url
   else
    render 'edit_impression'
   end
