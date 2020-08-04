@@ -48,8 +48,6 @@ m_Impression [label = <{<table border="0" align="center" cellspacing="0.5" cellp
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="content">content <font face="Arial Italic" color="grey60">text ∗</font></td></tr>
   <tr><td align="left" width="130" port="image">image <font face="Arial Italic" color="grey60">string</font></td></tr>
-  <tr><td align="left" width="130" port="register_id">register_id <font face="Arial Italic" color="grey60">integer (8)</font></td></tr>
-  <tr><td align="left" width="130" port="second_register_id">second_register_id <font face="Arial Italic" color="grey60">integer (8)</font></td></tr>
   <tr><td align="left" width="130" port="title">title <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="user_id">user_id <font face="Arial Italic" color="grey60">integer (8) ∗ FK</font></td></tr>
 </table>
