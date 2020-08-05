@@ -74,7 +74,7 @@ end
 
 
 group :production do
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
   gem 'fog'
   gem 'rails_12factor'
   gem 'fog-aws', group: :production

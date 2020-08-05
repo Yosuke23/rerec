@@ -59,7 +59,9 @@ body {
   margin-top: 10px;
   padding-bottom: 60px;
 }
-
+.home-image {
+  background: image-url('book-image-3.jpg') center 30px / cover no-repeat fixed;
+}
 section {
   overflow: auto;
 }
