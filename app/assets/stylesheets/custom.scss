@@ -31,9 +31,24 @@ $gray-medium-light: #eaeaea;
 .rerec_top > h1 {
   font-family: 'Moon';
   src: font-url('Moon2.0-Bold.otf');
+  font-size:40px;
+  font-weight: bold;
+  padding: 10%;
+  color: white;
+  text-shadow: 2px 2px 3px gray;
+}
+
+.home-button {
+  margin-top: -20px;
+}
+
+.rerec_top > p {
+  font-family: 'Moon';
+  src: font-url('Moon2.0-Bold.otf');
   font-size:50px;
   padding: 10%;
   color: white;
+  //margin-top: -20px;
   text-shadow: 1px 1px 2px gray;
 }
 

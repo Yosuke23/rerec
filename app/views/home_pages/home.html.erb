@@ -1,12 +1,14 @@
 <body class="body home-image">
   <div class="container center rerec_top">
-   <h1>読書日記アプリREREC</h1>
+   <h1 style="font-size: 55px;">REREC<br>
+   <span style="font-size: 21px;">読みたい本をサクッと検索、カンタン記録でいつでも気軽に読書管理！</span>
+    </h1>
     <% if logged_in? %>
-     <div class="s-button">
+     <div class="s-button home-button">
       <%= link_to "本をさがす", search_books_path, class: "btn btn-lg btn-info font-s" %>
      </div>
     <% else %>
-     <div class="s-button">
+     <div class="s-button home-button">
       <%= link_to "はじめる", 'started_page', class: "btn btn-lg btn-info font-s" %>
      </div>
     <% end %>
