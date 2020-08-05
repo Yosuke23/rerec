@@ -33,6 +33,7 @@ $gray-medium-light: #eaeaea;
   src: font-url('Moon2.0-Bold.otf');
   font-size:40px;
   font-weight: bold;
+  margin-top: -20px;
   padding: 10%;
   color: white;
   text-shadow: 2px 2px 3px gray;
@@ -711,7 +712,7 @@ table thead th:nth-child(4) {
 /*本検索ページの（search.erb）のデザイン*/
 .search-nav-1 {
   text-align: center;
-  width: 400px;
+  width: 370px;
 }
 /*************************************/
 /*読書メモ入力フォーム(impressions_title.html.erb/edit.html.erb)のデザイン*/
