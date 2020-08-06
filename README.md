@@ -14,9 +14,9 @@
  
 ## ER図
 
-![er_rerec](https://raw.githubusercontent.com/Yosuke23/rerec/master/erd.png)
+![er_rerec](https://raw.githubusercontent.com/Yosuke23/rerec/correction-branch/erd.png)
 
-## インフラ（予定）
+## インフラ
 
 クラウドインフラとして現在のデファクトスタンダードであるAWSを選択
 
