@@ -4,7 +4,6 @@ class Authorization < ApplicationRecord
   validates_presence_of :user_id, :uid, :provider
   #:providerと:uidのペアは一意であることを保証
   validates_uniqueness_of :uid, uniqueness: {:scope => :provider}
-  
   # ユーザー検索メソッド
   def Authorization.find_from_auth(auth)
    find_by_provider_and_uid(auth['provider'], auth['uid'])
