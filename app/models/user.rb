@@ -105,16 +105,19 @@ class User < ApplicationRecord
     def User.create_from_auth!(auth)
       token = User.new_token
       digest = User.digest(token)
-     #if auth['info']['email'].nil?# twitterはnilなので、上段でtwitter取得。下段でfacebookのauth取得
-      #User.create!(:name => auth['info']['name'], :email => ランダムのeダミーmialメソッド, :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
-     #else
+     if auth['info']['email'].nil?# twitterはemailがnilなので、上段でtwitter取得。下段でfacebookのauth取得
+      User.create!(:name => auth['info']['name'], :email => dammy_email, :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
+     else
       User.create!(:name => auth['info']['name'], :email => auth['info']['email'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
-     #end
+     end
     end
-
 private
-	 # メールアドレスを全て小文字に変換する
+	  # メールアドレスを全て小文字に変換する
 	  def downcase_email
 	  	email.downcase!
-	  end
+      end
+      # ダミーメール生成
+      def dammy_email
+       p [*"a".."z", *"A".."Z", *"0..9"].sample(18)*"" + "@" + "rerec.com"
+      end
 end
