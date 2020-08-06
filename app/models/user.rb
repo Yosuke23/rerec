@@ -109,7 +109,7 @@ class User < ApplicationRecord
       User.create!(:name => auth['info']['name'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
      #else
       #User.create!(:name => auth['info']['name'], :email => auth['info']['email'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
-     end
+     #end
     end
 
 private
