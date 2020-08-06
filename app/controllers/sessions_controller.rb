@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     end
     @user = @auth.user
     session[:user_id] = @user.id
-    #redirect_to @user
     redirect_back_or @user  
    else # 以下通常のログイン機能
    	 @user = User.find_by(email: params[:session][:email].downcase) 

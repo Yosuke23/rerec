@@ -80,7 +80,7 @@ private
 
 	  def user_params
 	   params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :avatar)
 	  end
      # アクセスしてきたユーザーとログイン中のユーザー（current_user）が同一でなければroot_urlに転送させ論理値を返す
     def correct_user
