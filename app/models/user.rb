@@ -105,10 +105,10 @@ class User < ApplicationRecord
     def User.create_from_auth!(auth)
       token = User.new_token
       digest = User.digest(token)
-     if auth['info']['email'].nil?# twitterはnilなので、上段でtwitter取得。下段でfacebookのauth取得
+     #if auth['info']['email'].nil?# twitterはnilなので、上段でtwitter取得。下段でfacebookのauth取得
       User.create!(:name => auth['info']['name'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
-     else
-      User.create!(:name => auth['info']['name'], :email => auth['info']['email'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
+     #else
+      #User.create!(:name => auth['info']['name'], :email => auth['info']['email'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth["credentials"], :password_digest => digest)
      end
     end
 
