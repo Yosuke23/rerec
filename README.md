@@ -1,6 +1,6 @@
 # REREC
 
-![スクリーンショット]()
+![スクリーンショット](https://raw.githubusercontent.com/Yosuke23/rerec/master/app/assets/images/rerec.png)
 
 https://rerec.work/
 
