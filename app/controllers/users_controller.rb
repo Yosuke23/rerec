@@ -51,6 +51,7 @@ class UsersController < ApplicationController
    	 redirect_to @user
      log_in @user
     else
+     flash.now[:danger] = '名前、メールアドレスが無効か、パスワードが不一致のようです'
    	 render 'new'
     end
   end
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
 
   def all_impressions_page
    @all_impression = Impression.all.order("created_at DESC")
-   @all_impressions = Kaminari.paginate_array(@all_impression).page(params[:page])
+   @all_impressions = Kaminari.paginate_array(@all_impression).page(params[:page]).per(5)
    flash.now[:info] = "投稿内容にはネタバレが含まれる場合があります"
   end
 

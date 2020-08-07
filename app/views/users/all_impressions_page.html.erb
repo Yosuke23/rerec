@@ -7,8 +7,6 @@
    <%= link_to "読書メモ確認", impressions_page_path, class: "btn-border" %>
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
-
-
 <% if @all_impressions.any? %> 
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読書メモ一覧 （投稿数：<%= @all_impressions.count %>） -</h3>
   <%= render @all_impressions %>
