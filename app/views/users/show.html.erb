@@ -1,12 +1,14 @@
 <%= provide(:title, @user.name) %>
 <!-- ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
 <% unless @feed_items.present? %>
-
     <section style="margin-top: -50px;">
-     <%= gravatar_for @user %>
-     <h3 style="font-size: 20px; font-weight: bold;"><%= @user.name %></h3>
-    </section><br>
-
+      <%= gravatar_for @user %>
+      <h3 style="font-size: 20px; font-weight: bold; margin-top: 35px;"><%= @user.name %></h3><br>
+     <div class="gravatar_edit">
+      <a href="http://gravatar.com/emails" target="_blank" rel="noopener">アイコン画像を変更</a>
+     </div>
+    </section><br>  
+   
   <div style="text-align: center;">
    <%= link_to "本をさがす", search_books_path, class: "btn-border" %>
    <%= link_to "読んでいる本", reading_books_path, class: "btn-border-2" %>

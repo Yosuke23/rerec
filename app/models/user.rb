@@ -105,7 +105,7 @@ class User < ApplicationRecord
     def want_book_register?(book)
      want_books.include?(book)
     end
-    
+
     # OAuth関連メソッド authからユーザーをcreate
     def User.create_from_auth!(auth)
       token = User.new_token

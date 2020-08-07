@@ -23,6 +23,17 @@
          </div>
           <% end %>
         </li>
+      <% elsif request.path == all_impressions_page_path  %>
+        <li class="search-nav">
+          <%= form_with url: user_path(current_user), method: :get, local: true do %>
+         <div class="input-group">
+          <%= search_field_tag "i", params[:i], class: "form-control", placeholder: "読書メモ検索" %>
+           <span class="input-group-btn">
+            <%= submit_tag "検索", class: "btn btn-default" %>
+           </span>
+         </div>
+          <% end %>
+        </li>
       <% end %>
 
       <% unless request.path == readed_books_table_path %>
@@ -31,6 +42,9 @@
         </li>
         <li>
          <%= link_to "本をさがす", search_books_path %>
+        </li>
+        <li>
+         <%= link_to "みんなの読書メモ", all_impressions_page_path %>
         </li>
       <% end %>
 

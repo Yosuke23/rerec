@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :destroy, :impressions_page, :readed_books_table]
+  before_action :logged_in_user, only: [:index, :show, :destroy, :impressions_page, :all_impressions_page, :readed_books_table]
   before_action :only_user, only: [:show]
   before_action :admin_user, only: [:index, :destroy]
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
    # サイト内検索機能
    unless params[:i] == "" # 空文字対策
     if params[:i]
-     @feed_item = Impression.where(user_id: current_user.id).search_by_keyword(params[:i])
+     @feed_item = Impression.all.search_by_keyword(params[:i])
       if @feed_item.any?
        @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page]).per(5)
        flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
@@ -67,7 +67,13 @@ class UsersController < ApplicationController
    @impressions = Kaminari.paginate_array(@users).page(params[:page]).per(5)
    @impression = current_user.impressions.build if logged_in?
   end
-  
+
+  def all_impressions_page
+   @all_impression = Impression.all.order("created_at DESC")
+   @all_impressions = Kaminari.paginate_array(@all_impression).page(params[:page])
+   flash.now[:info] = "投稿内容にはネタバレが含まれる場合があります"
+  end
+
   def readed_books_table
     @user = User.find(current_user.id) 
     @books_table = @user.readed_books.order(created_at: :desc).pluck(:title, :author, :created_at)
