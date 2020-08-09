@@ -64,13 +64,13 @@ class UsersController < ApplicationController
   
   def impressions_page
    @user = User.find_by(id: current_user.id)
-   @users = @user.impressions
+   @users = @user.impressions.order(updated_at: :desc)
    @impressions = Kaminari.paginate_array(@users).page(params[:page]).per(5)
    @impression = current_user.impressions.build if logged_in?
   end
 
   def all_impressions_page
-   @all_impression = Impression.all.order("created_at DESC")
+   @all_impression = Impression.all.where(published: true).order(updated_at: :desc)
    @all_impressions = Kaminari.paginate_array(@all_impression).page(params[:page]).per(5)
    flash.now[:info] = "投稿内容にはネタバレが含まれる場合があります"
   end

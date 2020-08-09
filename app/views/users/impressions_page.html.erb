@@ -7,7 +7,7 @@
    <%= link_to "読書メモ確認", impressions_page_path, class: "btn-border" %>
    <%= link_to "読んだ本一覧", readed_books_table_path, class: "btn-border" %>
   </div>
-<% if @impressions.any? %> 
+<% if @impressions.any? %>
  <h3 style="font-weight: bold; text-align: center; margin: 40px 0;">- 読書メモ （投稿数：<%= @impressions.count %>） -</h3>
   <%= render @impressions %>
   <%= paginate @impressions %>
@@ -15,4 +15,4 @@
  <hr style="border-top">
   <p style="text-align: center;">読書メモの記録はありません</p>
  <hr style="border-bottom">
- <% end %>
+<% end %>

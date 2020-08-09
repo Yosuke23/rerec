@@ -1,12 +1,19 @@
 class ImpressionsController < ApplicationController
  before_action :logged_in_user, only: [:create, :edit, :update, :destroy] 
- before_action :correct_user,   only: [:destroy, :edit, :update]
+ before_action :correct_user,   only: [:destroy, :edit]
  
  def create
-   @impression = current_user.impressions.build(impression_params)
-  if @impression.save
+  @impression = current_user.impressions.build(impression_params)
+  if params[:impression][:published] == '0' && @impression.title.length > 0 && @impression.content.length > 0
+   @impression.save # 保存してから
+   @impression.update(published: true) # trueへ変更して公開設定に
    redirect_to impressions_page_url
-   flash[:success] = "投稿が完了しました"
+   flash[:success] = "投稿が完了しました。このメモは“みんなの読書メモ”にも公開されます"
+  elsif params[:impression][:published] == '1' && @impression.title.length > 0 && @impression.content.length > 0
+   @impression.save
+   @impression.update(published: false) # falseへ変更して非公開に
+   redirect_to impressions_page_url
+   flash[:info] = "投稿が完了しました。このメモは非公開です"
   else
    redirect_to request.referrer || current_user
    flash[:danger] = "投稿内容に誤りがあります。タイトルとメモ欄は必ず入力してください"
@@ -19,11 +26,19 @@ class ImpressionsController < ApplicationController
 
  def update
   @impression = Impression.find(params[:id])
-  if @impression.update(impression_params)
-    flash[:success] = "編集内容に更新しました"
-    redirect_to impressions_page_url
+  if params[:impression][:published] == '0' && @impression.title.length > 0 && @impression.content.length > 0
+   @impression.update(impression_params)
+   @impression.update(published: true) # trueへ変更して公開設定に
+   redirect_to impressions_page_url
+   flash[:success] = "編集内容を保存しました。このメモは“みんなの読書メモ”にも公開されます"
+  elsif params[:impression][:published] == '1' && @impression.title.length > 0 && @impression.content.length > 0
+   @impression.update(impression_params)
+   @impression.update(published: false) # falseへ変更して公開設定に
+   redirect_to impressions_page_url
+   flash[:info] = "編集内容を保存しました。非公開メモに更新しました"
   else
-   render 'edit_impression'
+   redirect_to request.referrer || current_user
+   flash[:danger] = "編集内容に誤りがあります。タイトルとメモ欄は必ず入力してください"
   end
  end
 
@@ -46,7 +61,7 @@ class ImpressionsController < ApplicationController
  private
 
   def impression_params
-   params.require(:impression).permit(:content, :title, :image)
+   params.require(:impression).permit(:content, :title, :image, :published)
   end
   
   def correct_user

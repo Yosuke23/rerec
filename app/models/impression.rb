@@ -1,6 +1,6 @@
 class Impression < ApplicationRecord
   belongs_to :user
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(updated_at: :desc) }
   scope :search_by_keyword, -> (keyword) {
     where("impressions.title LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%")
     .or(where("impressions.content LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%")) if keyword.present?

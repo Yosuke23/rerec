@@ -16,9 +16,15 @@
    <%= f.label "読書メモ" %>
    <%= f.text_area :content, class: "text-area", placeholder: "1〜2000文字以内で入力してください" %>
   </div>
-   <%= f.submit "投稿", class: "btn btn-info" %>
+  <div style="vertical-align: middle; position:relative; right: 115px; top: -10px;">
+   <%= f.label :published, class: "checkbox inline" do %>
+   <%= f.check_box :published %>
+  </div>
+  <span style="vertical-align: middle; position:relative; right: 20px; top: -10px;">非公開で投稿</span>
+  <% end %>
+  <%= f.submit "投稿", class: "btn btn-info" %>
    <%# <span class="picture"> %>
    <%#= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
-  </span>
+   <%# </span> %>
  <% end %>
 </div>
