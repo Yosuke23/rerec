@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def all_impressions_page
-   @all_impression = Impression.all.where(published: true).order(updated_at: :desc)
+   @all_impression = Impression.where(published: true).order(updated_at: :desc)
    @all_impressions = Kaminari.paginate_array(@all_impression).page(params[:page]).per(5)
    flash.now[:info] = "投稿内容にはネタバレが含まれる場合があります"
   end
