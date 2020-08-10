@@ -18,7 +18,11 @@
    <%= f.label :published, class: "checkbox inline" do %>
    <%= f.check_box :published %>
   </div>
-  <span style="vertical-align: middle; position:relative; right: 20px; top: -10px;">非公開で更新</span>
+   <% if @impression.published == true %>
+    <span style="vertical-align: middle; position:relative; right: 20px; top: -10px;">非公開に更新</span>
+   <% else %>
+    <span style="vertical-align: middle; position:relative; right: 30px; top: -10px;">非公開のまま更新</span>
+   <% end %>
   <% end %>
   <%= f.submit "更新", class: "btn btn-info" %>
    <%# <span class="picture"> %>

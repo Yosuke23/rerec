@@ -56,6 +56,7 @@ class ImpressionsController < ApplicationController
   @impression = current_user.impressions.build if logged_in?
   @book_title = Book.find(params[:book_id]).title
   @book_image = Book.find(params[:book_id]).image
+  #@impression_published = @users[:published]
  end
 
  private

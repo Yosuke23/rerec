@@ -8,8 +8,15 @@
    <li style="line-height: 0.4;"><%= impression.user.name %>さんの投稿</li><br>
    <li>タイトル：<%= impression.title %></li>
    <li>読書メモ：<span class="book"><%= impression.content %></span></li>
-   <li>投稿/編集日：<%= impression.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分") %>（<%= time_ago_in_words(impression.updated_at)%>前）</li>
-   
+   <li>投稿/編集日：<%= impression.updated_at.strftime("%Y年%-m月%-d日") %>（<%= time_ago_in_words(impression.updated_at)%>前）
+   </li>
+   <% if request.path ==  impressions_page_path %>
+    <% if impression.published == false %>
+     <li>投稿設定：非公開</li>
+    <% else %>
+     <li>投稿設定：公開</li>
+    <% end %>
+   <% end %>
  <% if current_user?(impression.user) %>
    <li><%= link_to "削除", impression, method: :delete, data: { confirm: "本当に削除しますか？" } %>
    <%= link_to "編集", edit_impression_path(impression) %>
