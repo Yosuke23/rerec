@@ -35,7 +35,7 @@ class UsersController < ApplicationController
    @table_num = Kaminari.paginate_array(@books_table).page(params[:page]).current_page
    @base_level = (@table_num - 1)*10
    # 読みたい本の表
-   @want_books_table = @user.want_books.order(updated_at: :desc).pluck(:title, :author, :created_at)
+   @want_books_table = @user.want_books.order(updated_at: :desc).pluck(:title, :author, :updated_at)
    @want_books_table_data = Kaminari.paginate_array(@want_books_table).page(params[:page]).per(10)
    @want_table_num = Kaminari.paginate_array(@want_books_table).page(params[:page]).current_page
    @want_base_level = (@want_table_num - 1)*10
