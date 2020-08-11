@@ -27,20 +27,40 @@ class UsersController < ApplicationController
    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
    @users = @user.impressions
-   @impressions = Kaminari.paginate_array(@users).page(params[:page])
+   @impressions = Kaminari.paginate_array(@users).page(params[:page]).per(3)
    @impression = current_user.impressions.build if logged_in?
+   # 読んだ本の表
+   @books_table = @user.readed_books.order(created_at: :desc).pluck(:title, :author, :created_at)
+   @books_table_data = Kaminari.paginate_array(@books_table).page(params[:page]).per(10)
+   @table_num = Kaminari.paginate_array(@books_table).page(params[:page]).current_page
+   @base_level = (@table_num - 1)*10
+   # 読みたい本の表
+   @want_books_table = @user.want_books.order(updated_at: :desc).pluck(:title, :author, :created_at)
+   @want_books_table_data = Kaminari.paginate_array(@want_books_table).page(params[:page]).per(10)
+   @want_table_num = Kaminari.paginate_array(@want_books_table).page(params[:page]).current_page
+   @want_base_level = (@want_table_num - 1)*10
    # サイト内検索機能
-   unless params[:i] == "" # 空文字対策
-    if params[:i]
-     @feed_item = Impression.all.search_by_keyword(params[:i])
+   unless params[:i] == "" || params[:p] == "" # 空文字対策
+    if params[:i] #all_impressions_pageの検索バー
+     @feed_item = Impression.where(published: true).search_by_keyword(params[:i])
       if @feed_item.any?
        @feed_items = Kaminari.paginate_array(@feed_item).page(params[:page]).per(5)
        flash.now[:success]= "#{@feed_item.count}件の投稿がヒットしました"
       else
        flash[:danger] = "“#{params[:i]}” に一致する項目が見当たりませんでした"
-       redirect_to impressions_page_path
-     end
+       redirect_to all_impressions_page_path
+      end
     end
+     if params[:p] #impressions_pageの検索バー
+      @p_feed_item = @users.search_by_keyword(params[:p])
+       if @p_feed_item.any?
+        @p_feed_items = Kaminari.paginate_array(@p_feed_item).page(params[:page]).per(5)
+        flash.now[:success]= "#{@p_feed_item.count}件の投稿がヒットしました"
+       else
+        flash[:danger] = "“#{params[:p]}” に一致する項目が見当たりませんでした"
+        redirect_to impressions_page_path
+       end
+     end
    end
   end
   
@@ -86,15 +106,15 @@ class UsersController < ApplicationController
 private
 
 	  def user_params
-	   params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :avatar)
-	  end
-     # アクセスしてきたユーザーとログイン中のユーザー（current_user）が同一でなければroot_urlに転送させ論理値を返す
+	   params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+    end
+
+    # アクセスしてきたユーザーとログイン中のユーザー（current_user）が同一でなければroot_urlに転送させ論理値を返す
     def correct_user
      @user = User.find(params[:id])
      redirect_to(root_url) unless current_user?(@user)
     end
-
+    
     # adminを除く通常のユーザーがログインしていない他のユーザーのshowにアクセスすると自分のshowにリダイレクト
     def only_user
      unless current_user.admin?

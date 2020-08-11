@@ -1,6 +1,6 @@
 <%= provide(:title, @user.name) %>
 <!-- ヘッダーの検索バーで検索して結果がヒットした時は非表示にする -->
-<% unless @feed_items.present? %>
+<% unless @feed_items.present? || @p_feed_items.present? %>
     <section style="margin-top: -50px;">
       <%= gravatar_for @user %>
       <h3 style="font-size: 20px; font-weight: bold; margin-top: 35px;"><%= @user.name %></h3><br>
@@ -107,18 +107,84 @@
  <% if @impressions.any? %>
  <h3 style="font-weight: bold;">読書メモ （投稿数：<%= @impressions.count %>）</h3>
  <hr style="border-bottom: double;">
-  <%= paginate @impressions %>
   <%= render @impressions %>
-  <% end %>
+  <%= paginate @impressions %>
+ <% end %>
+ <!-- 読んだ本の表 -->
+<div style="margin-top: 90px;">
+ <h3 style="font-weight: bold; text-align: center; margin: -40px 0 40px ;">- 読んだ本一覧 -</h3>
+  <table class="table-style" style="margin: 0 auto">
+   <thead>
+    <tr>
+     <th style="width: 15px; text-align: center;">NO</th>
+     <th style="text-align: center;">本のタイトル</th>
+     <th style="text-align: center;">著者名</th>
+     <th style="text-align: center;">読了した日</th>
+    </tr>
+   </thead>
+    <% @books_table_data.each_with_index do |count, i| %>
+   <tbody>
+    <tr>
+     <td style="text-align: center; width: 15px;">
+      <%= @base_level + i += 1 %><!-- 1からスタート -->
+     </td>
+     <td>
+      <%= count[0] %>
+     </td>
+     <td>
+      <%= count[1] %>
+     </td>
+     <td style="width: 10px; text-align: center;">
+      <%= count[2].strftime("%Y年%-m月%-d日") %>
+     </td>
+    </tr>
+   </tbody>
+  <% end %>
+ </table>
+  <%= paginate @books_table_data %>
+</div>
+<!-- 読みたい本の表 -->
+<div style="margin-top: 90px;">
+ <h3 style="font-weight: bold; text-align: center; margin: -40px 0 40px ;">- 読みたい本一覧 -</h3>
+  <table class="table-style" style="margin: 0 auto">
+   <thead>
+    <tr>
+     <th style="width: 15px; text-align: center;">NO</th>
+     <th style="text-align: center;">本のタイトル</th>
+     <th style="text-align: center;">著者名</th>
+     <th style="text-align: center;">登録した日</th>
+    </tr>
+   </thead>
+    <% @want_books_table_data.each_with_index do |count, i| %>
+   <tbody>
+    <tr>
+     <td style="text-align: center; width: 15px;">
+      <%= @want_base_level + i += 1 %><!-- 1からスタート -->
+     </td>
+     <td>
+      <%= count[0] %>
+     </td>
+     <td>
+      <%= count[1] %>
+     </td>
+     <td style="width: 10px; text-align: center;">
+      <%= count[2].strftime("%Y年%-m月%-d日") %>
+     </td>
+    </tr>
+   </tbody>
+   <% end %>
+  </table>
+   <%= paginate @want_books_table_data %>
+  </div>
  <% end %>
 <% end %>
-
-<!-- ここまで -->
+<!-- 管理者表示はここまで -->
 
 <!-- 検索結果ありの場合のみ表示 -->
+<!-- all_impression_page.html.erbの検索バーからのパラメータ -->
 <% unless @feed_items.nil? %>
 <% if logged_in? %>
-　<header class="navbar navbar-fixed-top navbar-default">
+ <header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
    <div class="navbar-header">
     <%= link_to "REREC", root_path, id: "logo" %>
@@ -145,4 +211,33 @@
   <hr>
    <%= render @feed_items %>
 <% end %>
-<!-- ここまで -->
+<!-- impression_page.html.erbの検索バーからのパラメータ -->
+<% unless @p_feed_items.nil? %>
+<% if logged_in? %>
+ <header class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+   <div class="navbar-header">
+    <%= link_to "REREC", root_path, id: "logo" %>
+   </div>
+   <ul class="nav navbar-nav navbar-right" style="margin-right:-50px;">
+    <li class="search-nav">
+     <%= form_with url: user_path(current_user), method: :get, local: true do %>
+    <div class="input-group">
+     <%= search_field_tag "p", params[:p], class: "form-control", placeholder: "読書メモ検索" %>
+    <span class="input-group-btn">
+     <%= submit_tag "検索", class: "btn btn-default" %>
+    </span>
+    </div>
+     <% end %>
+    </li>
+    <li><%= link_to "戻る", current_user %></li>
+     <% end %>
+    </ul>
+   </div>
+  </div>
+ </header>
+  <hr style="margin-top: -70px;">
+   <h3 style="font-weight: bold; text-align: center;">投稿メモ検索結果</h3>
+  <hr>
+   <%= render @p_feed_items %>
+ <% end %>

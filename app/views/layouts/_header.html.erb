@@ -16,7 +16,7 @@
         <li class="search-nav">
           <%= form_with url: user_path(current_user), method: :get, local: true do %>
          <div class="input-group">
-          <%= search_field_tag "i", params[:i], class: "form-control", placeholder: "読書メモ検索" %>
+          <%= search_field_tag "p", params[:p], class: "form-control", placeholder: "読書メモ検索" %>
            <span class="input-group-btn">
             <%= submit_tag "検索", class: "btn btn-default" %>
            </span>
@@ -55,12 +55,11 @@
       <% end %>
      <% end %>
 
-　　<!-- ログイン時のヘッダーメニュー -->
-
+   <!-- ログイン時のヘッダーメニュー -->
       <% if logged_in? %>
         <li style="margin-top: -20px;"> 
          <% if current_user.admin? %>
-　        <%= link_to "ユーザー管理画面", users_path %>
+          <%= link_to "ユーザー管理画面", users_path %>
          <% end %>
         </li>
         <li>
