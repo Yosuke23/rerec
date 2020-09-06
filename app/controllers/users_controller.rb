@@ -21,9 +21,7 @@ class UsersController < ApplicationController
    @page_count = @user.readed_books.pluck(:page_count).sum
    @book_count = @user.readed_books.count
    @now_month_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).count
-   @last_month_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).count
    @month_page_count = @user.readed_books.where(created_at: date.beginning_of_month..date.end_of_month).pluck(:page_count).sum
-   @last_month_page_count = @user.readed_books.where(created_at: now.prev_month..now.prev_month.end_of_month).pluck(:page_count).sum
    @month_book_count = SecondRegister.where(user_id: current_user.id).group("MONTH(created_at)").count
    @year_book_count = SecondRegister.where(user_id: current_user.id).group("YEAR(created_at)").count
    @users = @user.impressions

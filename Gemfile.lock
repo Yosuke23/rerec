@@ -45,18 +45,18 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aliyun-sdk (0.7.3)
+    aliyun-sdk (0.8.0)
       nokogiri (~> 1.6)
       rest-client (~> 2.0)
     ansi (1.5.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.8.6.1)
+    autoprefixer-rails (9.8.6.3)
       execjs
     bcrypt (3.1.12)
     bindex (0.8.1)
-    bootsnap (1.4.7)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -90,7 +90,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     declarative (0.0.20)
     declarative-option (0.1.0)
@@ -146,8 +146,8 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.3.17)
-      aliyun-sdk (~> 0.7.3)
+    fog-aliyun (0.3.19)
+      aliyun-sdk (~> 0.8.0)
       fog-core
       fog-json
       ipaddress (~> 0.8)
@@ -155,7 +155,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (3.6.6)
+    fog-aws (3.6.7)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -193,11 +193,12 @@ GEM
     fog-ecloud (0.3.0)
       fog-core
       fog-xml
-    fog-google (1.10.0)
+    fog-google (1.11.0)
       fog-core (<= 2.1.0)
       fog-json (~> 1.2)
       fog-xml (~> 0.1.0)
       google-api-client (>= 0.32, < 0.34)
+      google-cloud-env (~> 1.2)
     fog-internet-archive (0.0.1)
       fog-core
       fog-json
@@ -280,6 +281,8 @@ GEM
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
       signet (~> 0.12)
+    google-cloud-env (1.3.3)
+      faraday (>= 0.17.3, < 2.0)
     googleauth (0.13.1)
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.4, < 3.0)
@@ -318,7 +321,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.3.1)
-    jwt (2.2.1)
+    jwt (2.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -336,10 +339,10 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.2.7)
+    lumberjack (1.2.8)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -382,13 +385,13 @@ GEM
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-facebook (6.0.0)
+    omniauth-facebook (7.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
-    omniauth-oauth2 (1.6.0)
-      oauth2 (~> 1.1)
+    omniauth-oauth2 (1.7.0)
+      oauth2 (~> 1.4)
       omniauth (~> 1.9)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
@@ -400,7 +403,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (3.12.6)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -496,7 +499,7 @@ GEM
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    spring (2.1.0)
+    spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -589,3 +592,9 @@ DEPENDENCIES
   unicorn
   web-console (>= 3.3.0)
   will_paginate (= 3.1.6)
+
+RUBY VERSION
+   ruby 2.5.1p57
+
+BUNDLED WITH
+   1.16.6
